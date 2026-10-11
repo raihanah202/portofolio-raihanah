@@ -1,0 +1,61 @@
+/* responsive.css — penyesuaian tampilan untuk layar HP (<760px) */
+@media(max-width:760px){.hero,.about{grid-template-columns:1fr}.hero{min-height:auto;padding-top:40px}.gear{order:-1}}
+@media(max-width:760px){.me{width:min(210px,58vw)}.hero{gap:34px}section{padding:56px 5vw}.detect{margin-top:34px}.tag{font-size:12.5px}}
+
+/* ============================================================
+   HP: top bar -> SIDEBAR (drawer dari kiri) + kartu dikecilkan
+   ============================================================ */
+@media(max-width:760px){
+  /* --- Sidebar: <nav> dijadikan panel samping yang menggeser masuk --- */
+  nav{position:fixed;top:0;left:0;bottom:0;width:min(76vw,270px);z-index:30;flex-direction:column;align-items:flex-start;justify-content:flex-start;
+      gap:18px;padding:calc(76px + env(safe-area-inset-top,0px)) 18px 24px;background:var(--bg);border-right:1px solid var(--line);border-bottom:0;
+      box-shadow:var(--glow);transform:translateX(-105%);visibility:hidden;transition:transform .4s cubic-bezier(.2,.7,.2,1),visibility 0s .4s}
+  nav div{flex-direction:column;overflow:visible;gap:4px;width:100%}
+  nav a{display:block;font-size:16px;padding:12px 14px;border-radius:12px}
+  nav a:hover,nav a:active{background:var(--card);color:var(--acc)}
+  #th{margin-top:auto}
+  /* --- Tombol hamburger melayang (jadi ✕ saat sidebar terbuka) --- */
+  #menu{display:grid;place-items:center;position:fixed;top:calc(env(safe-area-inset-top,0px) + 12px);left:12px;z-index:40;width:44px;height:44px;
+        border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:20px;box-shadow:var(--glow);cursor:pointer}
+  /* --- Lapisan gelap di belakang sidebar; tap untuk menutup --- */
+  #scrim{display:block;position:fixed;inset:0;z-index:25;background:#02081a99;backdrop-filter:blur(2px);opacity:0;pointer-events:none;transition:opacity .3s}
+  body.menu-open{overflow:hidden}
+  body.menu-open nav{transform:none;visibility:visible;transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+  body.menu-open #scrim{opacity:1;pointer-events:auto}
+
+  /* --- Ukuran lebih ringkas untuk layar kecil --- */
+  html{scroll-padding-top:68px} /* judul section tidak tertutup tombol ☰ */
+  body{font-size:15px}
+  section{padding:40px 5vw}
+  .hero{padding-top:70px}
+  .hero h1{font-size:clamp(38px,12vw,50px)}
+  h2{font-size:26px}
+  .btn{padding:9px 18px;font-size:14px}
+  .about p{font-size:15px}
+  .stat{padding:12px}.stat b{font-size:26px}
+  .card{padding:14px;border-radius:14px}
+  .card h3{font-size:11px;margin-bottom:8px}
+  .skills{grid-template-columns:1fr 1fr;gap:10px}
+  .chip{font-size:11px;padding:2px 8px}
+  .grid{gap:10px;margin-top:18px}
+  .grid .card h4{font-size:16px}.grid .card p{font-size:13px}
+  .tl{padding-left:18px;margin-top:18px}.it::before{left:-26px;width:12px;height:12px}
+  .it h3{font-size:17px}.it p,.it li{font-size:13.5px}
+  .tl .ph{max-width:100%}
+  .ph{aspect-ratio:2/1;margin-top:10px}
+}
+/* Layar sentuh tidak punya hover: cegah kartu "menempel" miring setelah disentuh */
+@media(hover:none){.card:hover{transform:none}}
+
+/* --- HERO di HP: semua rata tengah, tombol sejajar sama lebar --- */
+@media(max-width:760px){
+  .hero{padding-top:76px;text-align:center}
+  .hero-meta{justify-content:center;margin-bottom:12px}
+  .hero .lead{margin:0 auto;font-size:14.5px}
+  .detect{margin:34px 0 6px}
+  .type{margin:8px 0 12px}
+  .hero .btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:360px;margin:22px auto 0}
+  .hero .btn{padding:11px 10px;font-size:14px}
+  .hero .hand{margin-top:18px}
+  .loc{font-size:12px}
+}

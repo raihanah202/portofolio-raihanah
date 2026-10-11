@@ -1,0 +1,9 @@
+/* animations.css — semua gerakan: sabuk bergerak, kilau, kursor ketik, foto 3D, muncul saat scroll */
+@keyframes mv{to{background-position-x:28px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+.sp{position:absolute;color:var(--pk);font-size:26px;animation:tw 2.4s ease-in-out infinite}
+@keyframes tw{50%{transform:scale(.5) rotate(25deg);opacity:.5}}
+.cur{display:inline-block;width:3px;height:1.1em;background:var(--acc);margin-left:3px;vertical-align:-3px;animation:bl 1s steps(1) infinite}@keyframes bl{50%{opacity:0}}
+.me{transform-style:preserve-3d;transition:transform .18s ease-out;touch-action:pan-y;will-change:transform}
+.rv{opacity:0;transform:translateY(46px);transition:opacity 1.1s ease,transform 1.1s cubic-bezier(.2,.7,.2,1)}.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}

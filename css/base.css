@@ -1,0 +1,31 @@
+/* base.css — fondasi: warna, font, reset, nav, section, footer */
+
+/* --- Warna & font (design tokens): ganti warna tema di sini --- */
+:root{--bg:#0a1730;--card:#112552;--ink:#eaf2ff;--mut:#9fb6e0;--acc:#6fd3ff;--pk:#ffc4e6;--ok:#6fd3ff;--line:#6fd3ff33;--glow:0 0 28px #6fd3ff55;--hand:"Caveat",cursive;
+--serif:'Fraunces',Georgia,serif;--sans:'Outfit',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+
+/* --- Mode terang (aktif lewat tombol ◐) --- */
+:root[data-theme="light"]{--bg:#eef6ff;--card:#fff;--ink:#0a1a3d;--mut:#4a5f8a;--acc:#1e7fd6;--pk:#ff9ccf;--ok:#1e7fd6;--line:#0a1a3d22;--glow:0 6px 24px #1e7fd633}
+
+/* --- Reset dasar & gaya halaman --- */
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{background:radial-gradient(600px 420px at 88% 6%,#6fd3ff2e,transparent 60%),radial-gradient(520px 520px at 0 45%,#3b5bff26,transparent 60%),var(--bg);background-attachment:fixed;color:var(--ink);font:400 16px/1.65 var(--sans);overflow-x:hidden}
+a{color:inherit}
+
+/* --- Navigasi atas --- */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;display:flex;gap:6px 18px;align-items:center;justify-content:space-between;padding:12px 5vw;background:var(--bg);border-bottom:1px solid var(--line);font:600 13px var(--mono)}
+nav div{display:flex;gap:16px;overflow-x:auto}nav a{text-decoration:none;color:var(--mut);white-space:nowrap}nav a:hover{color:var(--acc)}
+#th{background:none;border:1px solid var(--line);color:var(--ink);border-radius:99px;padding:4px 12px;font:inherit;cursor:pointer}
+
+/* Tombol menu & scrim hanya dipakai di HP (diaktifkan di responsive.css) */
+#menu,#scrim{display:none}
+
+/* --- Layout section & judul --- */
+section{padding:72px 5vw;max-width:1100px;margin:auto}
+h2{font:600 clamp(28px,5vw,44px)/1.1 var(--serif);margin-bottom:6px;text-decoration:underline wavy var(--pk) 2px;text-underline-offset:9px}
+.eyebrow{font:600 12px var(--mono);color:var(--acc);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;display:block}
+
+/* --- Footer / kontak --- */
+footer{text-align:center;padding:50px 5vw 70px;border-top:1px solid var(--line)}
+footer h2{font-size:clamp(34px,7vw,64px)}footer p{color:var(--mut);margin:8px 0 20px}
