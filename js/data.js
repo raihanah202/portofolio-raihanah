@@ -34,16 +34,30 @@ const MAX_PHOTOS = 6;
 /* Opsional: daftar foto manual per slot, mis. { "kerja-1": ["img/a.jpg","img/b.jpg"] }
    Kalau kosong, otomatis pakai penamaan file img/<slot>-<nomor>.jpg */
 const PHOTOS = {
+
+  // Experience
   "adm": ["img/experience/adm-1.jpg", "img/certificate/sertif adm.png"],
   "forisa": ["img/experience/forisa-1.jpg", "img/experience/forisa-2.jpg"],
   "sera": ["img/experience/sera-1.jpg"],
+  // Project
+  "timingbelt": ["img/project/timingbelt-1.jpg", "img/project/timingbelt-2.jpg", "img/project/timingbelt-3.jpg", "img/project/timingbelt-4.jpg", "img/project/timingbelt-5.jpg", "img/project/timingbelt-6.jpg", "img/project/adm team.png"],
+  "fasilitas": ["img/project/Peminjaman sarana.jpg", "img/project/Peminjaman sarana team.png"],
+  "minfoin": ["img/project/minfoin-1.png", "img/project/minfoin-2.png", "img/project/minfoin team.png"],
+  "masterpart": ["img/project/ahm.jpg", "img/project/ahm present.png"],
+  // Certificate
   "vm": ["img/certificate/aguna.jpg"],
   "mikrotik": ["img/certificate/mtcna.jpg"],
   "linux": ["img/certificate/NDG.jpg"],
-  "paskib 2024": ["img/certificate/paskib 2024.jpg"],
-  "paskib 2025": ["img/certificate/paskib 2025.jpg"],
   "bem": ["img/certificate/bem.jpg"],
-  "sic": ["img/certificate/samsung.jpg"]
+  "sic": ["img/certificate/samsung.jpg"],
+  // Organization
+  "paskib 2024": ["img/organization/paskib 2024.png", "img/certificate/paskib 2024.jpg"],
+  "paskib 2025": ["img/organization/paskib 2024.png", "img/certificate/paskib 2025.jpg"],
+  "bem": ["img/organization/bem.png","img/certificate/bem.jpg"],
+  "novastech": ["img/organization/novastech.png","img/certificate/novastech.png"],
+  //Awards
+  "lkti":["img/certificate/lkti.png", "img/awards/lkti team.png"],
+  "huawei": ["img/certificate/huawei.png"]
 };
 
 /* Kata-kata yang diketik bergantian setelah "I build" di hero */
@@ -66,7 +80,7 @@ const SKILLS = [
 const EXPERIENCE = [
   {
     date: "Jan 2026 – Jul 2026", title: "Internship – Maintenance Engineering", photo: "adm",
-    org: CONFIDENTIAL ? "Automotive manufacturing company · Karawang" : "PT Astra Daihatsu Motor · Karawang", locked: true,
+    org: CONFIDENTIAL ? "Automotive manufacturing company · Karawang" : "PT Astra Daihatsu Motor · Karawang", locked: false,
     bullets: [
       "Placed in the Maintenance Engineering section (Maintenance Press), supporting digitalization initiatives.",
       "Worked closely with maintenance and press-line technicians to turn recurring equipment issues into digital monitoring requirements.",
@@ -120,7 +134,7 @@ const PROJECTS = [
   },
   {
     date: "Feb 2025 – Jul 2025", title: "Master Part Safety Grade Migration", photo: "masterpart",
-    org: CONFIDENTIAL ? "PT Astra Honda Motor (Developer)." : "PT Astra Honda Motor (Developer).",
+    org: CONFIDENTIAL ? "PT Astra Honda Motor (Developer)." : "PT Astra Honda Motor (Developer).", locked: true,
     bullets: [
       "Developed with the Waterfall methodology, delivering code from structured system requirements.",
       "Built internal part-data management modules focused on secure CRUD and Oracle database connectivity."
@@ -197,30 +211,30 @@ const ORGANIZATIONS = [
     photo: "bem", 
     desc: "Student Executive Board (BEM), 2024–2025", 
     date: "2024 – 2025",
-    pdf: "assets/bem.pdf" 
+    pdf: "assets/certicate/bem.pdf" 
   },
   { 
     title: "Event Division Coordinator", 
     photo: "novastech", 
     desc: "NOVASTECH Committee", 
     date: "2024",
-    pdf: "assets/bem.pdf" 
+    pdf: "assets/certicate/novastech.pdf" 
   }
 ];
 
 const AWARDS = [
   { 
     title: "3rd Place, Scientific Writing Competition", 
-    photo: "writing", 
+    photo: "lkti", 
     desc: "NOVASTECH, BEM Politeknik Astra", 
     date: "2025", 
-    pdf: "assets/bem.pdf" 
+    pdf: "assets/certificate/lkti.pdf" 
   },
   { 
     title: "National Finalist, Huawei ICT Competition 2024–2025", 
     photo: "huawei", 
     desc: "Network Track, Huawei ICT Academy", 
     date: "2024",
-    pdf: "assets/bem.pdf" 
+    pdf: "assets/certificate/huawei.pdf" 
   }
 ];

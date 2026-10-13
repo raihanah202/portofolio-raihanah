@@ -46,6 +46,25 @@ function renderTimeline(targetId, items, photoPrefix, emoji) {
   }).join("");
 }
 
+/* Grid khusus Education: berbentuk kotak-kotak rapi tanpa foto galeri */
+function renderEducationCards(targetId, items) {
+  $(targetId).innerHTML = items.map((it) => {
+    const stackChips = it.stack ? `<div class="chips" style="margin-top:16px">${renderChips(it.stack)}</div>` : "";
+    const descText = it.org && !it.org.includes("GPA") ? `<p style="margin-top:10px; font-size:14.5px; color:var(--mut); line-height:1.5;">${it.org}</p>` : "";
+    const gpaBadge = it.org && it.org.includes("GPA") ? `<div style="margin-top:12px;"><span class="chip" style="background:color-mix(in srgb, var(--acc) 12%, transparent); color:var(--acc); border:1px solid var(--line);">${it.org}</span></div>` : "";
+
+    return `<div class="card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 24px; margin-bottom: 14px;">
+      <div>
+        <span class="w" style="font-family: var(--mono); font-size: 13px; color: var(--acc);">${it.date}</span>
+        <h4 style="font: 600 20px/1.3 var(--serif); margin: 8px 0 4px; color: var(--ink);">${it.title}</h4>
+        ${descText}
+        ${gpaBadge}
+      </div>
+      ${stackChips}
+    </div>`;
+  }).join("");
+}
+
 /* Grid Kartu untuk Sertifikat, Organisasi, dan Penghargaan dengan galeri slider & tombol PDF */
 function renderCardGrid(targetId, items, photoPrefix, emoji) {
   $(targetId).innerHTML = items.map((it, n) => {
@@ -80,7 +99,7 @@ function renderAll() {
   renderSkills();
   renderTimeline("ex", EXPERIENCE, "kerja", "💼");
   renderTimeline("pr", PROJECTS, "proyek", "🚀");
-  renderTimeline("ed", EDUCATION, "pendidikan", "🎓");
+  renderEducationCards("ed", EDUCATION); // Menggunakan grid kotak tanpa foto khusus education
   renderCardGrid("ce", CERTIFICATES, "sertifikat", "📜");
   renderCardGrid("og", ORGANIZATIONS, "organisasi", "🌸");
   renderCardGrid("aw", AWARDS, "penghargaan", "🏆");
