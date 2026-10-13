@@ -7,7 +7,7 @@ const CONTACT = {
   linkedin: "https://www.linkedin.com/in/raihanahbasyirah",
   whatsapp: "62859106990123",
   waText: "Hi Raihanah, I found your portfolio website and would like to get in touch.",
-  cv: "assets/CV_Raihanah_Basyirah.pdf"
+  cv: "assets/certificate/CV_Raihanah_Basyirah.pdf"
 };
 
 const CONFIDENTIAL = true;
@@ -130,10 +130,10 @@ const CERTIFICATES = [
 ];
 
 const ORGANIZATIONS = [
-  { title: "Member – Tim Paskibra ASTRAtech 2024", photo: "paskib 2024", desc: "Campus flag-ceremony team", date: "Aug 2024", pdf: "assets/certicate/paskib 2024.pdf" },
-  { title: "Member – Tim Paskibra ASTRAtech 2025", photo: "paskib 2025", desc: "Campus flag-ceremony team", date: "Aug 2025", pdf: "assets/certicate/paskib 2025.pdf" },
-  { title: "Media & Content Manager", photo: "bem-org", desc: "Student Executive Board (BEM), 2024–2025", date: "2024 – 2025", pdf: "assets/certicate/bem.pdf" },
-  { title: "Event Division Coordinator", photo: "novastech", desc: "NOVASTECH Committee", date: "2024", pdf: "assets/certicate/novastech.pdf" }
+  { title: "Member – Tim Paskibra ASTRAtech 2024", photo: "paskib 2024", desc: "Campus flag-ceremony team", date: "Aug 2024", pdf: "assets/certificate/paskib 2024.pdf" },
+  { title: "Member – Tim Paskibra ASTRAtech 2025", photo: "paskib 2025", desc: "Campus flag-ceremony team", date: "Aug 2025", pdf: "assets/certificate/paskib 2025.pdf" },
+  { title: "Media & Content Manager", photo: "bem-org", desc: "Student Executive Board (BEM), 2024–2025", date: "2024 – 2025", pdf: "assets/certificate/bem.pdf" },
+  { title: "Event Division Coordinator", photo: "novastech", desc: "NOVASTECH Committee", date: "2024", pdf: "assets/certificate/novastech.pdf" }
 ];
 
 const AWARDS = [
