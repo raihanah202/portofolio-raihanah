@@ -2,6 +2,7 @@
    render.js — Mengubah data (data.js) menjadi HTML di halaman.
    ============================================================ */
 
+
 const $ = (id) => document.getElementById(id);
 
 const renderChips = (list) => list.map((x) => `<span class="chip">${x}</span>`).join("");
