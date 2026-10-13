@@ -41,7 +41,7 @@ const PHOTOS = {
   "sera": ["img/experience/sera-1.jpg"],
   // Project
   "timingbelt": ["img/project/timingbelt-1.jpg", "img/project/timingbelt-2.jpg", "img/project/timingbelt-3.jpg", "img/project/timingbelt-4.jpg", "img/project/timingbelt-5.jpg", "img/project/timingbelt-6.jpg", "img/project/adm team.png"],
-  "fasilitas": ["img/project/peminjaman sarana-1.jpg", "img/project/peminjaman sarana team.png"],
+  "fasilitas": ["img/project/sarana-1.jpg", "img/project/sarana team.png"],
   "minfoin": ["img/project/minfoin-1.png", "img/project/minfoin-2.png", "img/project/minfoin team.png"],
   "masterpart": ["img/project/ahm.jpg", "img/project/ahm present.png"],
   // Certificate
