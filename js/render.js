@@ -106,6 +106,7 @@ function renderSkills() {
 
 function renderContact() {
   $("btn-cv").href = CONTACT.cv;
+  $("ct-cv").href = CONTACT.cv;                 // tombol CV kedua di footer
   $("ct-email").href = `mailto:${CONTACT.email}`;
   $("ct-email").textContent = CONTACT.email;
   $("ct-linkedin").href = CONTACT.linkedin || "https://www.linkedin.com/search/results/people/?keywords=Raihanah%20Basyirah";

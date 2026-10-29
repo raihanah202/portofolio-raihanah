@@ -48,64 +48,64 @@ const SKILLS = [
 
 const EXPERIENCE = [
   {
-    date: "Jan 2026 – Jul 2026", title: "Internship – Maintenance Engineering", photo: "adm",
+    date: "Jan 2026 to Jul 2026", title: "Maintenance Engineering Intern", photo: "adm",
     org: CONFIDENTIAL ? "Automotive manufacturing company · Karawang" : "PT Astra Daihatsu Motor · Karawang", locked: false,
     bullets: [
-      "Placed in the Maintenance Engineering section (Maintenance Press), supporting digitalization initiatives.",
-      "Worked closely with maintenance and press-line technicians to turn recurring equipment issues into digital monitoring requirements.",
-      "Collected data and ran tests on-site under real production conditions.",
-      "Reported progress and technical findings to industrial supervisors and academic advisors."
+      "Joined the Maintenance Engineering section (Maintenance Press) to support digitalization projects.",
+      "Worked with maintenance and press-line technicians to turn recurring equipment problems into requirements for digital monitoring.",
+      "Collected data and ran tests on site under real production conditions.",
+      "Reported progress and technical findings to industry supervisors and academic advisors."
     ]
   },
   {
-    date: "Jun 2022 – Aug 2022", title: "Internship – Sales & Distribution Data Validation", photo: "forisa",
+    date: "Jun 2022 to Aug 2022", title: "Sales & Distribution Data Validation Intern", photo: "forisa",
     org: "PT Forisa NusaPersada · Jakarta",
-    bullets: ["Recorded and validated sales and branch distribution data to ensure geographic and sales-performance accuracy."]
+    bullets: ["Recorded and validated sales and branch distribution data so that regional and sales performance figures stayed accurate."]
   },
   {
-    date: "Feb 2022 – May 2022", title: "Internship – Finance, Accounting & Tax", photo: "sera",
+    date: "Feb 2022 to May 2022", title: "Finance, Accounting & Tax Intern", photo: "sera",
     org: "PT Serasi Autoraya (SERA) · Jakarta",
     bullets: [
-      "Assisted with administrative and financial record-keeping, keeping company documents accurate and orderly.",
-      "Actively learned and took part in the division's day-to-day administrative processes."
+      "Assisted with administrative and financial record keeping, and kept company documents accurate and in order.",
+      "Took part in the division's day-to-day administrative work and learned its processes on the job."
     ]
   }
 ];
 
 const PROJECTS = [
   {
-    date: "Jan 2026 – Jul 2026", title: "Timing Belt Condition Monitoring System", photo: "timingbelt", locked: true,
-    org: "A real-time computer vision system using a custom-trained YOLOv8s-OBB model that classifies timing belt condition (OK / Warning / NG) from 4 industrial cameras.",
+    date: "Jan 2026 to Jul 2026", title: "Timing Belt Condition Monitoring System", photo: "timingbelt", locked: true,
+    org: "A real-time computer vision system that classifies timing belt condition as OK, Warning or NG from four industrial cameras, using a YOLOv8s-OBB model I trained myself.",
     bullets: [
-      "Fully offline 3-tier stack (Flask API, React-Vite dashboard, MySQL) on an NVIDIA Jetson Orin Nano, shown live on a factory-floor monitor.",
-      "Curated and annotated a custom dataset despite limited on-site data access, iteratively tuning the model for real production conditions."
+      "Runs fully offline as a 3-tier stack (Flask API, React-Vite dashboard, MySQL) on an NVIDIA Jetson Orin Nano, and is shown live on a factory-floor monitor.",
+      "Data access on site was limited, so I curated and annotated my own dataset and tuned the model step by step for real production conditions."
     ],
     stack: ["Python", "YOLOv8s-OBB", "OpenCV", "Flask", "React-Vite", "MySQL", "Jetson Orin Nano", "Roboflow"]
   },
   {
-    date: "Sep 2025 – Dec 2025", title: "Campus Facility Booking System", photo: "fasilitas", locked: true,
-    org: "Campus facility and inventory management website (role: Full-Stack Developer).",
+    date: "Sep 2025 to Dec 2025", title: "Campus Facility Booking System", photo: "fasilitas", locked: true,
+    org: "A website for managing campus facilities and inventory. My role: Full-Stack Developer.",
     bullets: [
-      "Co-initiated the system to digitize facility booking and asset tracking.",
-      "Modeled the Purchase Requisition workflow and produced UML diagrams to align stakeholders on system scope."
+      "Co-initiated the system to move facility booking and asset tracking online.",
+      "Modeled the Purchase Requisition workflow and drew UML diagrams so stakeholders agreed on the system scope."
     ],
     stack: ["Next.js", "ASP.NET", "SQL Server"]
   },
   {
-    date: "Mar 2025 – Jul 2025", title: "MINFOIN — Mobile Information App", photo: "minfoin", 
-    org: "Android information app for the Informatics Management program (Full-Stack Developer).",
+    date: "Mar 2025 to Jul 2025", title: "MINFOIN: Mobile Information App", photo: "minfoin",
+    org: "An Android information app for the Informatics Management program. My role: Full-Stack Developer.",
     bullets: [
       "Designed the UI in React Native and managed the SQL Server database.",
-      "Completed 6 master-data sets and 1 core transaction module."
+      "Finished six master-data sets and one core transaction module."
     ],
     stack: ["React Native", "SQL Server"]
   },
   {
-    date: "Feb 2025 – Jul 2025", title: "Master Part Safety Grade Migration", photo: "masterpart",
+    date: "Feb 2025 to Jul 2025", title: "Master Part Safety Grade Migration", photo: "masterpart",
     org: "PT Astra Honda Motor", locked: true,
     bullets: [
-      "Developed with the Waterfall methodology, delivering code from structured system requirements.",
-      "Built internal part-data management modules focused on secure CRUD and Oracle database connectivity."
+      "Built with the Waterfall method, writing code from documented system requirements.",
+      "Built internal modules for managing part data, with secure CRUD operations and an Oracle database connection."
     ],
     stack: ["HTML", "Java Spring", "Oracle"]
   }
@@ -113,12 +113,12 @@ const PROJECTS = [
 
 const EDUCATION = [
   {
-    date: "Aug 2023 – Aug 2026", title: "D3 Informatics Management · Politeknik Astra", photo: "poltek", org: "GPA 3.53 / 4.00",
+    date: "Aug 2023 to Aug 2026", title: "D3 Informatics Management · Politeknik Astra", photo: "poltek", org: "GPA 3.53 / 4.00",
     stack: ["Software Engineering", "Database Systems", "System Modeling", "Requirements Analyst", "Mobile Programming", "Computer Vision"]
   },
   {
-    date: "Jul 2020 – May 2023", title: "SMK Negeri 36 Jakarta · Multimedia", photo: "smk36",
-    org: "Visual design and digital media production; foundation in design principles and content creation."
+    date: "Jul 2020 to May 2023", title: "SMK Negeri 36 Jakarta · Multimedia", photo: "smk36",
+    org: "Studied visual design and digital media production, which gave me a base in design principles and content creation."
   }
 ];
 
@@ -130,15 +130,15 @@ const CERTIFICATES = [
 ];
 
 const ORGANIZATIONS = [
-  { title: "Member – Tim Paskibra ASTRAtech 2024", photo: "paskib 2024", desc: "Campus flag-ceremony team", date: "Aug 2024", pdf: "assets/certificate/paskib 2024.pdf" },
-  { title: "Member – Tim Paskibra ASTRAtech 2025", photo: "paskib 2025", desc: "Campus flag-ceremony team", date: "Aug 2025", pdf: "assets/certificate/paskib 2025.pdf" },
-  { title: "Media & Content Manager", photo: "bem-org", desc: "Student Executive Board (BEM), 2024–2025", date: "2024 – 2025", pdf: "assets/certificate/bem.pdf" },
+  { title: "Member, Tim Paskibra ASTRAtech 2024", photo: "paskib 2024", desc: "Campus flag-ceremony team", date: "Aug 2024", pdf: "assets/certificate/paskib 2024.pdf" },
+  { title: "Member, Tim Paskibra ASTRAtech 2025", photo: "paskib 2025", desc: "Campus flag-ceremony team", date: "Aug 2025", pdf: "assets/certificate/paskib 2025.pdf" },
+  { title: "Media & Content Manager", photo: "bem-org", desc: "Student Executive Board (BEM), 2024 to 2025", date: "2024 to 2025", pdf: "assets/certificate/bem.pdf" },
   { title: "Event Division Coordinator", photo: "novastech", desc: "NOVASTECH Committee", date: "2024", pdf: "assets/certificate/novastech.pdf" }
 ];
 
 const AWARDS = [
   { title: "3rd Place, Scientific Writing Competition", photo: "lkti", desc: "NOVASTECH, BEM Politeknik Astra", date: "2025", pdf: "assets/certificate/lkti.pdf" },
-  { title: "National Finalist, Huawei ICT Competition 2024–2025", photo: "huawei", desc: "Network Track, Huawei ICT Academy", date: "2024", pdf: "assets/certificate/huawei.pdf" }
+  { title: "National Finalist, Huawei ICT Competition 2024-2025", photo: "huawei", desc: "Network Track, Huawei ICT Academy", date: "2024", pdf: "assets/certificate/huawei.pdf" }
 ];
 /* ===== (BARU) Aksi lucu — isi teks diedit di sini ===== */
 // Kata yang berputar setelah "I build ..." (roll vertikal, menggantikan efek ketik)
@@ -152,5 +152,5 @@ const BUBBLES = [
   ["🗄️", "Business systems", "SQL Server · MySQL"]
 ];
 // Ucapan maskot per section (kunci = id section) + ucapan acak saat maskot diklik
-const MASCOT = { hero: "Hi, welcome! 💙", about: "That's Raihanah in a nutshell ✨", skills: "So many tools in one toolbox 🧰", exp: "Real-world experience, not just class projects", projects: "Psst... click the images! 👆", edu: "Fresh D3 graduate 🎓", certs: "Certificates galore 📜", org: "A true team player 🤝", awards: "Awards & finalist spots 🏆", contact: "Say hi! I don't bite 💌" };
-const MASCOT_FUN = ["Hehe, that tickles! 💖", "Boop! 🌸", "Psst, the CV button is right there 😉", "Did you see the projects yet?", "Have a lovely day! ✨"];
+const MASCOT = { hero: "Hi, welcome!", about: "A quick introduction to Raihanah.", skills: "A full toolbox, from React to YOLOv8.", exp: "Real workplace experience.", projects: "Psst, click the images to enlarge them.", edu: "Politeknik Astra, D3 Informatics Management.", certs: "Every certificate opens as a PDF.", org: "Campus teams and committees.", awards: "A Huawei national finalist and a 3rd place in a writing contest.", contact: "Say hello, the buttons are right here." };
+const MASCOT_FUN = ["Hehe, that tickles!", "Boop!", "The CV button is up there if you need it.", "Have you opened the projects yet?", "Have a nice day!"];
