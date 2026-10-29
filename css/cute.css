@@ -117,3 +117,123 @@ footer .hd{justify-content:center}
 .tail{transform-box:fill-box;transform-origin:0% 100%;animation:wag 2.4s ease-in-out infinite}
 @keyframes wag{50%{transform:rotate(14deg)}}
 @media(prefers-reduced-motion:reduce){.num,.np,.skills>.card,.skills>.card::before,.skills>.card::after,.tail{animation:none!important}}
+
+/* ============================================================
+   ===== REVISI TERBARU =====
+   1) frame foto hero  2) bubble lokasi  3) logo bunga  4) toggle tema + bahasa
+   5) 9 menu muat di navbar  6) warna DARK MODE lebih terang  7) bar footer baru
+   ============================================================ */
+
+/* ---------- 1) FRAME FOTO: bentuk telur yang "bernapas", tepi pelangi pastel, 2 gumpalan warna di belakang ---------- */
+.hero .me .fr{border:6px solid transparent;border-radius:46% 54% 45% 55%/40% 38% 22% 24%;
+  box-shadow:0 18px 40px rgba(0,0,0,.35),0 0 0 9px rgba(255,255,255,.12);
+  background:linear-gradient(#0000,#0000) padding-box,conic-gradient(from var(--ang),#F9A8D4,#FDE68A,#A7F3D0,#7DD3FC,#C4B5FD,#F9A8D4) border-box;
+  animation:spin 8s linear infinite,frm 9s ease-in-out infinite}
+@keyframes frm{50%{border-radius:56% 44% 55% 45%/36% 42% 24% 20%}}
+/* gumpalan warna 1 (pink -> kuning -> oranye) & 2 (biru -> ungu -> pink), miring & ikut "bernapas" */
+.hero .me::before,.hero .me::after{content:"";position:absolute;z-index:-1;border:0;opacity:.95}
+.hero .me::before{inset:-16px -24px -12px 20px;border-radius:58% 42% 47% 53%/45% 55% 45% 55%;
+  background:linear-gradient(145deg,#F9A8D4,#FDE68A 58%,#FDBA74);transform:rotate(7deg) translateZ(-40px);animation:blobm 9s ease-in-out infinite}
+.hero .me::after{inset:16px 22px -24px -28px;border-radius:44% 56% 55% 45%/52% 42% 58% 48%;
+  background:linear-gradient(145deg,#7DD3FC,#A78BFA 58%,#F0ABFC);transform:rotate(-8deg) translateZ(-55px);animation:blobm 11s ease-in-out -3s infinite reverse}
+@keyframes blobm{50%{border-radius:40% 60% 54% 46%/58% 44% 56% 42%}}
+/* cincin putus-putus yang berputar pelan mengelilingi frame */
+.me .ring{position:absolute;inset:-34px -42px;border-radius:50%;border:2px dashed rgba(249,168,212,.75);animation:spin2 30s linear infinite;pointer-events:none}
+.me .dc{position:absolute;pointer-events:none}
+.dc-heart{top:64px;right:-32px;width:32px;height:32px;transform:translateZ(55px) rotate(14deg);filter:drop-shadow(0 4px 8px rgba(255,111,168,.5));animation:heartb 3.4s ease-in-out infinite}
+@keyframes heartb{50%{transform:translateZ(55px) rotate(14deg) scale(1.2)}}
+.dc-sq{bottom:-18px;left:28px;width:70px;height:19px;transform:translateZ(45px) rotate(-4deg)}
+
+/* ---------- 2) BUBBLE LOKASI di samping foto (gaya sama dengan bubble Computer Vision / Full-Stack) ---------- */
+.loc-bub{position:absolute;left:-46px;bottom:58px;z-index:3;display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:99px;white-space:nowrap;
+  background:linear-gradient(135deg,#FEF08A,#FDBA74);color:#1a1033;font:700 13px var(--sans);
+  box-shadow:inset 0 -6px 10px rgba(255,255,255,.35),inset 0 6px 10px rgba(255,255,255,.6),0 10px 20px rgba(0,0,0,.25);
+  transform:translateZ(70px) rotate(-4deg);animation:locfl 4.5s ease-in-out infinite}
+.loc-bub svg{flex:none;color:#E11D48}
+@keyframes locfl{50%{transform:translateZ(70px) rotate(-4deg) translateY(-9px)}}
+@media(max-width:760px){.loc-bub{left:-24px;bottom:20px;font-size:12px;padding:7px 12px}.dc-heart{right:-22px}}
+
+/* ---------- 3) LOGO BUNGA (pengganti teks "rb/>") ---------- */
+nav .logo{display:inline-flex;align-items:center;flex:none;cursor:pointer;-webkit-tap-highlight-color:transparent;border-radius:50%}
+nav .logo svg{width:40px;height:40px;overflow:visible;filter:drop-shadow(0 3px 6px rgba(0,0,0,.28));transition:scale .3s cubic-bezier(.3,1.6,.5,1)}
+.lp{transform-box:fill-box;transform-origin:center;animation:spin2 14s linear infinite}
+.lp ellipse:nth-child(4n+1){fill:#F9A8D4}.lp ellipse:nth-child(4n+2){fill:#C4B5FD}.lp ellipse:nth-child(4n+3){fill:#7DD3FC}.lp ellipse:nth-child(4n+4){fill:#FDE68A}
+nav .logo:hover svg,nav .logo:focus-visible svg{scale:1.15}
+nav .logo:hover .lp{animation-duration:2.5s}
+nav .logo:focus-visible{outline:2px solid #fff;outline-offset:3px}
+
+/* ---------- 4) TOGGLE TEMA (matahari berwajah <-> bulan ngantuk) + TOGGLE BAHASA EN/ID ---------- */
+nav .ctl{display:flex;align-items:center;gap:8px;flex:none}
+nav #th{position:relative;width:66px;height:34px;padding:0;border:0;border-radius:99px;font-size:0;cursor:pointer;flex:none;overflow:hidden;
+  background:linear-gradient(90deg,#7DD3FC,#FBCFE8);box-shadow:inset 0 2px 6px rgba(0,0,0,.18),0 4px 12px rgba(0,0,0,.18);transition:background .5s}
+:root[data-theme="dark"] nav #th{background:linear-gradient(90deg,#312E81,#6D28D9)}
+nav #th .k{position:absolute;top:4px;left:4px;width:26px;height:26px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#FEF08A,#FBBF24 60%,#F97316);box-shadow:0 0 0 4px rgba(254,240,138,.35),0 0 14px #FBBF24;
+  transition:transform .5s cubic-bezier(.3,1.5,.5,1),background .5s,box-shadow .5s}
+nav #th .k::before{content:"";position:absolute;left:7px;top:10px;width:3px;height:3px;border-radius:50%;background:#7C2D12;box-shadow:9px 0 #7C2D12;transition:height .3s,top .3s}   /* mata */
+nav #th .k::after{content:"";position:absolute;left:9px;top:15px;width:8px;height:4px;border-bottom:2px solid #7C2D12;border-radius:0 0 8px 8px}                     /* senyum */
+:root[data-theme="dark"] nav #th .k{transform:translateX(32px);background:radial-gradient(circle at 35% 30%,#FFFBEB,#E5E7EB 65%,#CBD5E1);box-shadow:0 0 0 4px rgba(199,210,254,.28),0 0 14px #C7D2FE}
+:root[data-theme="dark"] nav #th .k::before{height:2px;top:12px;background:#475569;box-shadow:9px 0 #475569}                                                         /* mata terpejam */
+:root[data-theme="dark"] nav #th .k::after{border-color:#475569;width:5px;left:10px;height:3px}
+nav #th::before{content:"☁";position:absolute;right:8px;top:6px;font-size:16px;line-height:1;color:#fff;transition:opacity .4s,transform .4s}     /* awan (siang) */
+nav #th::after{content:"✦ ·";position:absolute;left:9px;top:8px;font-size:11px;line-height:1;letter-spacing:3px;color:#FEF9C3;opacity:0;transform:translateY(-8px);transition:opacity .4s,transform .4s} /* bintang (malam) */
+:root[data-theme="dark"] nav #th::before{opacity:0;transform:translateY(10px)}
+:root[data-theme="dark"] nav #th::after{opacity:1;transform:none}
+nav #th:hover .k{scale:1.1}nav #th:active .k{scale:.92}
+nav #th:focus-visible,nav #lang:focus-visible{outline:2px solid #fff;outline-offset:2px}
+
+nav #lang{position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:center;width:70px;height:34px;padding:0;border:0;border-radius:99px;cursor:pointer;flex:none;
+  background:linear-gradient(90deg,#F9A8D4,#C4B5FD);box-shadow:inset 0 2px 6px rgba(0,0,0,.15),0 4px 12px rgba(0,0,0,.18);font:800 12px var(--sans);letter-spacing:.04em;color:#fff;transition:background .5s}
+:root[data-theme="dark"] nav #lang{background:linear-gradient(90deg,#9D174D,#4C1D95)}
+nav #lang::before{content:"";position:absolute;top:4px;left:4px;width:calc(50% - 4px);height:26px;border-radius:99px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.25);transition:transform .4s cubic-bezier(.3,1.5,.5,1)}
+nav #lang[data-l="id"]::before{transform:translateX(100%)}
+nav #lang span{position:relative;z-index:1;text-align:center;color:#fff;transition:color .3s}
+nav #lang[data-l="en"] span:first-child,nav #lang[data-l="id"] span:last-child{color:#6D28D9}
+nav #lang:hover::before{box-shadow:0 2px 12px rgba(255,255,255,.6)}
+@media(max-width:760px){nav .ctl{margin-top:auto}nav .ctl #th{margin-top:0}}
+
+/* ---------- 5) 9 MENU MUAT di navbar desktop ---------- */
+@media(min-width:761px){
+  nav{padding-left:16px;gap:10px}
+  nav div{min-width:0;gap:2px}
+  nav a{padding:8px 12px;font-size:12.5px}
+}
+@media(min-width:761px) and (max-width:1060px){
+  nav a{padding:7px 8px;font-size:11.5px}
+}
+@media(min-width:761px) and (max-width:900px){      /* layar sempit: menu bisa digeser kalau masih kepanjangan */
+  nav div{flex:1 1 auto;justify-content:flex-start;overflow-x:auto;scrollbar-width:none}
+  nav div::-webkit-scrollbar{display:none}
+  nav .logo svg{width:32px;height:32px}
+}
+
+/* ---------- 6) DARK MODE: warna judul / nomor bunga / kartu dibuat lebih terang (tidak "mati") ---------- */
+:root[data-theme="dark"] #about{--a:#38BDF8;--b:#A5B4FC}
+:root[data-theme="dark"] #skills{--a:#C4B5FD;--b:#F9A8D4}
+:root[data-theme="dark"] #exp{--a:#60A5FA;--b:#22D3EE}
+:root[data-theme="dark"] #projects{--a:#2DD4BF;--b:#86EFAC}
+:root[data-theme="dark"] #edu{--a:#FDBA74;--b:#FDA4AF}
+:root[data-theme="dark"] #certs{--a:#A5B4FC;--b:#E9D5FF}
+:root[data-theme="dark"] #org{--a:#F9A8D4;--b:#FDBA74}
+:root[data-theme="dark"] #awards{--a:#FDE68A;--b:#FDBA74}
+:root[data-theme="dark"] .skills>.card:nth-child(7n+1){--a:#60A5FA;--b:#22D3EE}
+:root[data-theme="dark"] .skills>.card:nth-child(7n+2){--a:#A5B4FC;--b:#C4B5FD}
+:root[data-theme="dark"] .skills>.card:nth-child(7n+3){--a:#C4B5FD;--b:#F472B6}
+:root[data-theme="dark"] .skills>.card:nth-child(7n+4){--a:#2DD4BF;--b:#86EFAC}
+:root[data-theme="dark"] .skills>.card:nth-child(7n+5){--a:#FDBA74;--b:#FB7185}
+:root[data-theme="dark"] .skills>.card:nth-child(7n+6){--a:#F9A8D4;--b:#FDBA74}
+:root[data-theme="dark"] .skills>.card:nth-child(7n+7){--a:#38BDF8;--b:#A5B4FC}
+/* teks di atas gradasi pastel harus gelap supaya terbaca */
+:root[data-theme="dark"] nav a.on,:root[data-theme="dark"] nav a.on:hover,:root[data-theme="dark"] nav a:hover,
+:root[data-theme="dark"] .btn.p,:root[data-theme="dark"] .btn-pdf,:root[data-theme="dark"] .sl-ctrl .round.solid,:root[data-theme="dark"] .dt-b:hover{color:#0B1230}
+:root[data-theme="dark"] h2{filter:drop-shadow(0 0 14px color-mix(in srgb,var(--a) 35%,transparent))}   /* judul sedikit bercahaya di latar gelap */
+:root[data-theme="dark"] .num b{color:var(--a)}
+
+/* ---------- 7) BAR PALING BAWAH (gantikan "made with love") ---------- */
+.fb{background:#12132B;color:#C9CBEA;padding:22px 5vw 26px}
+.fb-in{max-width:1100px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:12px 20px;flex-wrap:wrap;font:500 15px var(--sans)}
+.fb a{color:#FFF7E6;font-weight:700;text-decoration:none;border-bottom:2px solid #FBBF24;padding-bottom:1px;transition:color .2s,transform .2s}
+.fb a:hover{color:#FBBF24;transform:translateY(-2px)}
+@media(max-width:1300px){.fb{padding-right:calc(5vw + 90px)}}   /* sisakan ruang untuk maskot kucing di pojok kanan bawah */
+
+@media(prefers-reduced-motion:reduce){.hero .me::before,.hero .me::after,.me .ring,.dc-heart,.loc-bub,.lp{animation:none!important}}

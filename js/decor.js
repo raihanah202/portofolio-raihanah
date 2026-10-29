@@ -30,6 +30,7 @@ function dcBurst(x, y, n = 9) { // ledakan hati & bunga ke segala arah
 function initRoll() {
   const box = $("roll");
   if (!box) return;
+  clearInterval(box._t);                                      // aman dipanggil ulang saat ganti bahasa
   const cols = ["#7DD3FC", "#F9A8D4", "#FDE68A", "#A7F3D0", "#C4B5FD"];
   const words = [...ROLL_WORDS, ROLL_WORDS[0]];             // kata pertama diulang di akhir agar putarannya mulus
   box.innerHTML = `<span class="rl">${words.map((w, i) => `<b style="color:${cols[i % cols.length]}"><i>${w}</i></b>`).join("")}</span>`;
@@ -44,7 +45,7 @@ function initRoll() {
     rl.style.transition = "none"; i = 0; rl.style.transform = "translateY(0)";
     void rl.offsetWidth; rl.style.transition = "";
   });
-  setInterval(() => { i++; rl.style.transform = `translateY(-${i * 1.5}em)`; fit(); }, 2400);
+  box._t = setInterval(() => { i++; rl.style.transform = `translateY(-${i * 1.5}em)`; fit(); }, 2400);
 }
 
 /* 2) Bunga yang mengembang + melayang, dan bubble "apa yang bisa kubuat" di hero */
@@ -70,7 +71,24 @@ function initDecor() {
     f.innerHTML = flowerSVG(pal[i % pal.length], [5, 6, 8][i % 3]);
     host.append(f);
   });
-  $("bubbles").innerHTML = BUBBLES.map(([e, t, s], n) =>
+  renderBubbles();
+
+  // Bunga kecil + hati + garis keriting yang menempel di sekeliling frame foto (ikut miring 3D bareng foto)
+  const me = document.querySelector(".me");
+  if (me) [
+    ["#F9A8D4", 6, "top:-28px;right:-14px", 54, 5.5], ["#FDE68A", 8, "bottom:118px;right:-42px", 42, 6.5],
+    ["#A7F3D0", 5, "top:44%;left:-40px", 38, 7], ["#C4B5FD", 6, "bottom:-20px;right:34px", 46, 5]
+  ].forEach(([c, p, pos, s, d]) => {
+    const f = document.createElement("span");
+    f.className = "flw";
+    f.style.cssText = `${pos};--s:${s}px;--d:${d}s;transform:translateZ(45px)`;
+    f.innerHTML = flowerSVG(c, p);
+    me.append(f);
+  });
+}
+function renderBubbles() { // bubble "apa yang bisa kubuat" di hero (dipanggil ulang saat ganti bahasa)
+  const b = $("bubbles");
+  if (b) b.innerHTML = BUBBLES.map(([e, t, s], n) =>
     `<span class="bub b${n % 5}" style="--d:${n * 0.35}s">${e} <b>${t}</b><small>${s}</small></span>`).join("");
 }
 

@@ -34,7 +34,7 @@ function renderGallery(key, emoji) {
 
 function renderTimeline(targetId, items, photoPrefix, emoji) {
   const html = items.map((it, n) => {
-    const lock = it.locked && CONFIDENTIAL ? '<span class="lock">🔒 details confidential</span>' : "";
+    const lock = it.locked && CONFIDENTIAL ? `<span class="lock">🔒 ${t("locked")}</span>` : "";
     const bullets = it.bullets ? `<ul>${it.bullets.map((b) => `<li>${b}</li>`).join("")}</ul>` : "";
     const stack = it.stack ? `<div class="chips" style="margin-top:10px">${renderChips(it.stack)}</div>` : "";
     return `<div class="it">
@@ -69,7 +69,7 @@ function renderEducationCards(targetId, items) {
 function renderCardGrid(targetId, items, photoPrefix, emoji) {
   const html = items.map((it, n) => {
     const key = it.photo || `${photoPrefix}-${n + 1}`;
-    const pdfPath = it.pdf ? `<div style="margin-top: 10px;"><a href="${it.pdf}" target="_blank" rel="noopener" class="btn-pdf">Buka PDF ↗</a></div>` : "";
+    const pdfPath = it.pdf ? `<div style="margin-top: 10px;"><a href="${it.pdf}" target="_blank" rel="noopener" class="btn-pdf">${t("pdf")}</a></div>` : "";
     
     return `<div class="card">
       ${renderGallery(key, emoji)}
@@ -85,7 +85,7 @@ function renderCardGrid(targetId, items, photoPrefix, emoji) {
 /* Slider kartu (Experience & Projects): foto di atas, panel navy berisi judul + penjelasan */
 function renderSlider(targetId, items, photoPrefix, emoji) {
   const cards = items.map((it, n) => {
-    const lock = it.locked && CONFIDENTIAL ? '<span class="lock">🔒 details confidential</span>' : "";
+    const lock = it.locked && CONFIDENTIAL ? `<span class="lock">🔒 ${t("locked")}</span>` : "";
     const bullets = it.bullets ? `<ul>${it.bullets.map((b) => `<li>${b}</li>`).join("")}</ul>` : "";
     const stack = it.stack ? `<div class="chips">${renderChips(it.stack)}</div>` : "";
     return `<article class="sc">${renderGallery(it.photo || `${photoPrefix}-${n + 1}`, emoji)}

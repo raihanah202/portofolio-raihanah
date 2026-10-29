@@ -2,6 +2,7 @@
    main.js — Titik awal. Urutannya penting:
    render dulu (bikin elemen), baru pasang efek di atasnya.
    ============================================================ */
+initLang();                               // 0. bahasa EN/ID (tukar data + teks statis SEBELUM dirender)
 renderAll();                              // 1. data.js -> HTML
 initHeads();                              // 1b. judul section: nomor dalam bunga + teks
 initTheme();                              // 2. tombol tema
@@ -18,6 +19,7 @@ initProgress();                           // 5b. bar progres scroll
 initSpy();                                // 5c. menu aktif sesuai section
 initTimelineFill();                       // 5d. garis timeline menyala
 initPdfLinks();                           // 5e. PDF: tab baru + terunduh (desktop)
+initLogoTop();                            // 5f. klik logo bunga / "Back to top" = scroll ke atas
 addEventListener("load", () => {          // 6. galeri (tunggu semua foto selesai dimuat)
   initGalleries();
 });

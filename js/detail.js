@@ -79,7 +79,7 @@ function dtDetail(card) {
   const p = q(".sub,p"), pdf = q('a[href$=".pdf" i]');
   return (q(".w") ? `<span class="w">${q(".w").textContent}</span>` : "") + `<h3>${title}${lock}</h3>` +
     (p ? `<p>${p.innerHTML}</p>` : "") + (q("ul") ? q("ul").outerHTML : "") + (q(".chips") ? q(".chips").outerHTML : "") +
-    (pdf ? `<a class="btn-pdf" href="${pdf.getAttribute("href")}" target="_blank" rel="noopener">Open PDF ↗</a>` : "");
+    (pdf ? `<a class="btn-pdf" href="${pdf.getAttribute("href")}" target="_blank" rel="noopener">${t("pdf")}</a>` : "");
 }
 
 // Menimpa openLightbox/closeLightbox bawaan effects.js (dipanggil dari klik gambar)

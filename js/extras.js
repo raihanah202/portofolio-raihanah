@@ -18,7 +18,7 @@ function initProgress() {
 
 /* 2) Scroll-spy: menu yang sesuai section aktif diberi kelas "on" */
 function initSpy() {
-  const map = { edu: "projects", org: "certs" }; // section tanpa menu ikut menu terdekat
+  const map = {}; // semua section sekarang punya menu sendiri (9 menu), tidak perlu pemetaan
   const links = [...document.querySelectorAll("#side a")];
   const io = new IntersectionObserver((es) => es.forEach((e) => {
     if (!e.isIntersecting) return;
@@ -61,6 +61,7 @@ function initPdfLinks() {
 }
 
 /* 5) Slider kartu Experience & Projects: geser manual, tombol ← →, titik penanda, kartu aktif membesar */
+const AUTO_MS = 4500; // jeda geser otomatis kartu (ms) — ubah angka ini kalau mau lebih cepat/lambat
 function initSliders() {
   document.querySelectorAll(".sl").forEach((sl) => {
     const tr = sl.querySelector(".sl-track"), cs = [...tr.children], ds = [...sl.querySelectorAll(".sl-dots i")];
@@ -75,5 +76,26 @@ function initSliders() {
     sl.querySelector(".sl-next").onclick = () => go(cur() + 1);
     tr.addEventListener("scroll", () => requestAnimationFrame(mark), { passive: true });
     mark();
+
+    /* --- Geser OTOMATIS: pindah ke kartu berikutnya tiap AUTO_MS, balik ke awal kalau sudah di kartu terakhir --- */
+    clearInterval(sl._auto);                                    // aman dipanggil ulang (mis. saat ganti bahasa)
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let hover = false, visible = true, holdUntil = 0;
+    const hold = (ms) => (holdUntil = Date.now() + ms);
+    sl.onmouseenter = () => (hover = true);                     // kursor di atas slider = berhenti
+    sl.onmouseleave = () => { hover = false; hold(1200); };
+    sl.onpointerdown = () => hold(8000);                        // user geser/klik manual = beri jeda 8 detik
+    sl.onfocusin = () => (hover = true);
+    sl.onfocusout = () => (hover = false);
+    if (sl._io) sl._io.disconnect();
+    sl._io = new IntersectionObserver(([e]) => (visible = e.isIntersecting), { threshold: 0.35 }); // hanya jalan saat slider terlihat
+    sl._io.observe(sl);
+    sl._auto = setInterval(() => {
+      const lb = document.getElementById("lightbox");
+      const popupOpen = lb && lb.classList.contains("open");   // jangan geser saat pop-up foto terbuka
+      if (hover || !visible || document.hidden || popupOpen || Date.now() < holdUntil) return;
+      const a = cur();
+      go(a >= cs.length - 1 ? 0 : a + 1);
+    }, AUTO_MS);
   });
 }

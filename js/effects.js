@@ -4,8 +4,15 @@
 
 /* 1) Tombol ganti tema */
 function initTheme() {
-  const root = document.documentElement;
-  $("th").onclick = () => { root.dataset.theme = root.dataset.theme === "light" ? "dark" : "light"; };
+  const root = document.documentElement, btn = $("th");
+  try { const s = localStorage.getItem("theme"); if (s === "light" || s === "dark") root.dataset.theme = s; } catch (e) {} // ingat pilihan terakhir
+  const sync = () => btn.setAttribute("aria-checked", root.dataset.theme === "dark");
+  btn.onclick = () => {
+    root.dataset.theme = root.dataset.theme === "light" ? "dark" : "light";
+    try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
+    sync();
+  };
+  sync();
 }
 
 /* 2) Teks "I build ..." typing effect */
@@ -135,6 +142,7 @@ function initGalleries() {
     const startAutoSlide = () => {
       if (autoInterval) return;
       autoInterval = setInterval(() => {
+        if (!track.isConnected) { clearInterval(autoInterval); autoInterval = null; return; } // galeri sudah dirender ulang (ganti bahasa)
         let maxScroll = track.scrollWidth - track.clientWidth;
         if (track.scrollLeft >= maxScroll - 5) {
           track.scrollTo({ left: 0, behavior: "smooth" });
