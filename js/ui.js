@@ -7,8 +7,8 @@ let LANG = "en";
 
 /* Teks kecil yang dipakai render.js / detail.js (dipanggil lewat t("kunci")) */
 const UI_STR = {
-  en: { locked: "details private", pdf: "Open PDF ↗" },
-  id: { locked: "detail dirahasiakan", pdf: "Buka PDF ↗" }
+  en: { locked: "some details withheld", pdf: "Open PDF ↗" },
+  id: { locked: "sebagian detail dirahasiakan", pdf: "Buka PDF ↗" }
 };
 function t(k) { return (UI_STR[LANG] && UI_STR[LANG][k]) || UI_STR.en[k] || k; }
 
@@ -17,10 +17,10 @@ const STATIC_ID = {
   n_about: "Tentang", n_skills: "Skill", n_exp: "Pengalaman", n_projects: "Proyek", n_edu: "Edukasi",
   n_certs: "Sertifikat", n_org: "Organisasi", n_awards: "Prestasi", n_contact: "Kontak",
   build: "Saya membuat",
-  lead: "Manajemen Informatika (D3) di Politeknik Astra. Saya membuat aplikasi web dan mobile, dan proyek terbaru saya adalah sistem vision real-time yang membaca empat kamera industri di NVIDIA Jetson Orin Nano.",
+  lead: "Lulusan D3 Manajemen Informatika Politeknik Astra. Saya bekerja sebagai developer sekaligus analis sistem: saya memodelkan kebutuhan lebih dulu, lalu membangun aplikasi web dan mobile. Proyek terbaru saya adalah sistem vision real-time yang membaca empat kamera industri di NVIDIA Jetson Orin Nano.",
   dl: "Unduh CV", cm: "Hubungi saya",
   h_about: "Sedikit tentang saya",
-  about_p: "Saya telah menyelesaikan pendidikan D3 Manajemen Informatika di Politeknik Astra. Saya membuat aplikasi web dan mobile dengan Next.js, ASP.NET, React, React Native, Laravel, dan Spring Boot, didukung database SQL Server, MySQL, dan Oracle. Untuk tugas akhir, saya merancang dan men-deploy sistem computer vision real-time di perangkat edge untuk memantau kondisi timing belt di sebuah perusahaan manufaktur otomotif. Sebelum menulis kode, saya juga mengerjakan sisi analisisnya: mengumpulkan kebutuhan dan memodelkan alur proses bisnis.",
+  about_p: "Saya baru menyelesaikan D3 Manajemen Informatika di Politeknik Astra. Saya membuat aplikasi web dan mobile dengan Next.js, ASP.NET, React, React Native, dan Java Spring, dengan database SQL Server, MySQL, dan Oracle. Untuk tugas akhir, saya merancang dan men-deploy sistem computer vision real-time di perangkat edge untuk memantau kondisi timing belt di sebuah perusahaan manufaktur otomotif. Modelnya mencapai mAP@50 96% pada data uji. Di setiap proyek saya juga berperan sebagai analis sistem: mengumpulkan kebutuhan, menyusun dokumen kebutuhan, menggambar diagram UML, merancang mockup di Figma, dan mendokumentasikan setiap perkembangan.",
   s1: "IPK D3 / 4.00", s2: "Proyek utama", s3: "Magang di industri", s4: "Sertifikasi",
   h_skills: "Tech stack", h_exp: "Pengalaman kerja", h_projects: "Proyek", h_edu: "Pendidikan",
   h_certs: "Sertifikasi", h_org: "Organisasi", h_awards: "Penghargaan",
@@ -39,60 +39,62 @@ const DATA_ID = {
       title: "Magang Maintenance Engineering",
       org: CONFIDENTIAL ? "Perusahaan manufaktur otomotif · Karawang" : "PT Astra Daihatsu Motor · Karawang",
       bullets: [
-        "Bergabung di seksi Maintenance Engineering (Maintenance Press) untuk mendukung proyek digitalisasi.",
-        "Bekerja bersama teknisi maintenance dan press line untuk mengubah masalah mesin yang berulang menjadi kebutuhan monitoring digital.",
-        "Mengumpulkan data dan menguji langsung di lapangan dalam kondisi produksi yang sebenarnya.",
-        "Melaporkan perkembangan dan temuan teknis kepada supervisor industri dan dosen pembimbing."
+        "Bergabung di seksi Maintenance Press sebagai magang digitalisasi, dengan peran ganda sebagai developer dan analis sistem. Saya mengubah masalah mesin yang berulang dari teknisi maintenance dan press line menjadi kebutuhan sistem monitoring digital, lalu mencatatnya dalam dokumen kebutuhan, diagram UML, dan mockup Figma.",
+        "Mengumpulkan data dan menguji langsung di lapangan dalam kondisi produksi yang sebenarnya, sehingga sistem dibangun dan disetel dengan data lini yang nyata. Saya melaporkan perkembangan dan temuan teknis kepada supervisor industri dan dosen pembimbing, serta mendokumentasikan setiap tahapnya.",
+        "Hasil kerjanya menjadi Sistem Monitoring Kondisi Timing Belt, yang berjalan di monitor lantai pabrik dan mendukung target digitalisasi seksi tersebut."
       ]
     },
     {
       title: "Magang Validasi Data Penjualan & Distribusi",
-      bullets: ["Mencatat dan memvalidasi data penjualan serta distribusi cabang agar data wilayah dan kinerja penjualan tetap akurat."]
+      bullets: ["Sebagai magang validasi data, saya mencatat dan memvalidasi data penjualan serta distribusi cabang, sehingga angka kinerja wilayah dan penjualan tetap akurat."]
     },
     {
       title: "Magang Keuangan, Akuntansi & Pajak",
       bullets: [
-        "Membantu pencatatan administrasi dan keuangan, serta menjaga dokumen perusahaan tetap akurat dan rapi.",
-        "Ikut mengerjakan administrasi harian divisi dan mempelajari prosesnya langsung di tempat."
+        "Sebagai magang keuangan, akuntansi, dan pajak, saya membantu pencatatan administrasi dan keuangan, sehingga dokumen perusahaan tetap akurat dan rapi.",
+        "Saya juga ikut mengerjakan administrasi harian divisi dan mempelajari prosesnya langsung di tempat."
       ]
     }
   ],
   PROJECTS: [
     {
       title: "Sistem Monitoring Kondisi Timing Belt",
-      org: "Sistem computer vision real-time yang mengklasifikasikan kondisi timing belt sebagai OK, Warning, atau NG dari empat kamera industri, memakai model YOLOv8s-OBB yang saya latih sendiri.",
+      org: "Sistem computer vision real-time yang mengklasifikasikan kondisi timing belt sebagai OK, Warning, atau NG dari empat kamera industri. Peran saya: developer end-to-end sekaligus analis sistem, dari kebutuhan dan dataset sampai model, API, dan dashboard.",
       bullets: [
-        "Berjalan sepenuhnya offline sebagai stack 3-tier (Flask API, dashboard React-Vite, MySQL) di NVIDIA Jetson Orin Nano, dan ditampilkan langsung di monitor lantai pabrik.",
-        "Akses data di lapangan terbatas, jadi saya menyusun dan menganotasi dataset sendiri, lalu menyetel model secara bertahap sesuai kondisi produksi yang sebenarnya."
+        "Menganalisis masalah bersama tim maintenance dan mendokumentasikannya dalam dokumen kebutuhan, diagram UML, dan mockup Figma, serta mencatat setiap tahap perkembangan.",
+        "Menyusun dan menganotasi dataset sendiri di Roboflow karena data di lapangan terbatas, lalu melatih model YOLOv8s-OBB dengan 46 gambar yang diperluas lewat augmentasi. Model mencapai mAP@50 96% pada data uji.",
+        "Membangun stack 3-tier (Flask API, dashboard React-Vite, MySQL) yang berjalan sepenuhnya offline di NVIDIA Jetson Orin Nano Super dengan latensi P95 0,225 detik, dan menampilkannya langsung di monitor lantai pabrik. Model disetel bertahap sesuai kondisi produksi yang sebenarnya dengan System Prototyping."
       ]
     },
     {
       title: "Sistem Booking Fasilitas Kampus",
-      org: "Website pengelolaan fasilitas dan inventaris kampus. Peran saya: Full-Stack Developer.",
+      org: "Website pengelolaan fasilitas dan inventaris kampus. Peran saya: Full-Stack Developer sekaligus analis sistem.",
       bullets: [
-        "Ikut menginisiasi sistem untuk memindahkan booking fasilitas dan pelacakan aset ke platform digital.",
-        "Memodelkan alur Purchase Requisition dan menggambar diagram UML agar semua pihak sepakat soal cakupan sistem."
+        "Ikut menginisiasi sistem untuk memindahkan booking fasilitas dan pelacakan aset ke platform digital. Sebagai analis, saya menyusun dokumen kebutuhan, memodelkan alur Purchase Requisition, menggambar diagram UML, dan merancang mockup Figma, sehingga semua pihak sepakat soal cakupan sistem sebelum pengembangan dimulai.",
+        "Membangunnya dengan Next.js (frontend), ASP.NET (backend), dan SQL Server, serta mendokumentasikan setiap tahap perkembangan."
       ]
     },
     {
       title: "MINFOIN: Aplikasi Informasi Mobile",
-      org: "Aplikasi informasi Android untuk program studi Manajemen Informatika. Peran saya: Full-Stack Developer.",
+      org: "Aplikasi informasi Android untuk program studi Manajemen Informatika. Peran saya: Full-Stack Developer sekaligus analis sistem.",
       bullets: [
+        "Menyusun dokumen kebutuhan, diagram UML, dan mockup Figma sebelum coding, serta mendokumentasikan setiap tahap perkembangan.",
         "Merancang UI dengan React Native dan mengelola database SQL Server.",
         "Menyelesaikan enam set data master dan satu modul transaksi utama."
       ]
     },
     {
       title: "Migrasi Master Part Safety Grade",
+      org: "Modul web internal untuk mengelola data part di PT Astra Honda Motor, dibuat untuk migrasi Master Part Safety Grade. Peran saya: Full-Stack Developer sekaligus analis sistem.",
       bullets: [
-        "Dibangun dengan metode Waterfall, menulis kode berdasarkan kebutuhan sistem yang terdokumentasi.",
-        "Membangun modul internal untuk mengelola data part, dengan operasi CRUD yang aman dan koneksi ke database Oracle."
+        "Menyusun diagram UML, dokumentasi kebutuhan, dan mockup Figma, serta mendokumentasikan setiap tahap perkembangan.",
+        "Menulis kode berdasarkan kebutuhan sistem yang terdokumentasi dengan metode Waterfall, membangun modul internal di Java Spring dengan halaman HTML, operasi CRUD yang aman, dan koneksi ke database Oracle."
       ]
     }
   ],
   EDUCATION: [
     {
-      title: "D3 Manajemen Informatika · Politeknik Astra",
+      title: "D3 Manajemen Informatika · Politeknik Astra", org: "IPK 3,53 / 4,00",
       stack: ["Rekayasa Perangkat Lunak", "Sistem Basis Data", "Pemodelan Sistem", "Analis Kebutuhan", "Pemrograman Mobile", "Computer Vision"]
     },
     { org: "Mempelajari desain visual dan produksi media digital, yang menjadi dasar saya dalam prinsip desain dan pembuatan konten." }
@@ -110,7 +112,7 @@ const DATA_ID = {
   ],
   ROLL_WORDS: ["aplikasi web", "aplikasi mobile", "REST API", "sistem vision real-time", "sistem booking & workflow"],
   BUBBLES: [
-    ["🌐", "Aplikasi web", "React · Next.js"], ["📱", "Aplikasi mobile", "React Native"], ["🔌", "REST API", "ASP.NET · Spring Boot"],
+    ["🌐", "Aplikasi web", "React · Next.js"], ["📱", "Aplikasi mobile", "React Native"], ["🔌", "REST API", "ASP.NET · Java Spring"],
     ["👁️", "Sistem vision", "YOLOv8 · OpenCV"], ["🗄️", "Sistem bisnis", "SQL Server · MySQL"]
   ],
   MASCOT: {

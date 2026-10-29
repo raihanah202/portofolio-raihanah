@@ -50,8 +50,8 @@ function renderTimeline(targetId, items, photoPrefix, emoji) {
 function renderEducationCards(targetId, items) {
   const html = items.map((it) => {
     const stackChips = it.stack ? `<div class="chips" style="margin-top:16px">${renderChips(it.stack)}</div>` : "";
-    const descText = it.org && !it.org.includes("GPA") ? `<p style="margin-top:10px; font-size:14.5px; color:var(--mut); line-height:1.5;">${it.org}</p>` : "";
-    const gpaBadge = it.org && it.org.includes("GPA") ? `<div style="margin-top:12px;"><span class="chip" style="background:color-mix(in srgb, var(--acc) 12%, transparent); color:var(--acc); border:1px solid var(--line);">${it.org}</span></div>` : "";
+    const descText = it.org && !/GPA|IPK/.test(it.org) ? `<p style="margin-top:10px; font-size:14.5px; color:var(--mut); line-height:1.5;">${it.org}</p>` : "";
+    const gpaBadge = it.org && /GPA|IPK/.test(it.org) ? `<div style="margin-top:12px;"><span class="chip" style="background:color-mix(in srgb, var(--acc) 12%, transparent); color:var(--acc); border:1px solid var(--line);">${it.org}</span></div>` : "";
 
     return `<div class="card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 24px; margin-bottom: 14px;">
       <div>

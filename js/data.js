@@ -27,7 +27,7 @@ const PHOTOS = {
   "bem": ["img/certificate/bem.jpg"],
   "sic": ["img/certificate/samsung.jpg"],
   "paskib 2024": ["img/organization/paskib 2024.png", "img/certificate/paskib 2024.jpg"],
-  "paskib 2025": ["img/organization/paskib 2024.png", "img/certificate/paskib 2025.jpg"],
+  "paskib 2025": ["img/organization/paskib 2025.png", "img/certificate/paskib 2025.jpg"],
   "bem-org": ["img/organization/bem.png", "img/certificate/bem.jpg"],
   "novastech": ["img/organization/novastech.png", "img/certificate/novastech.png"],
   "lkti": ["img/certificate/lkti.png", "img/awards/lkti team.png"],
@@ -40,10 +40,11 @@ const SKILLS = [
   { group: "AI / Computer Vision", items: ["Python", "YOLOv8 (OBB)", "OpenCV", "Roboflow", "Deep Learning", "Edge AI (NVIDIA Jetson)"] },
   { group: "Programming Languages", items: ["Python", "JavaScript", "Java", "C#"] },
   { group: "Frontend", items: ["React.js", "React Native", "Next.js", "React-Vite", "HTML"] },
-  { group: "Backend", items: ["Flask", "ASP.NET", "Java Spring", "Laravel", "REST API"] },
+  { group: "Backend", items: ["Flask", "ASP.NET", "Java Spring", "REST API"] },
   { group: "Database", items: ["SQL Server", "MySQL", "Oracle"] },
+  { group: "Analysis & Design", items: ["UML", "Requirements Document", "Business Process Modeling", "UI Mockup (Figma)", "Progress Documentation"] },
   { group: "Architecture & Methods", items: ["3-Tier", "SDLC", "Waterfall", "System Prototyping", "Throwaway Prototyping"] },
-  { group: "Tools", items: ["Postman", "VS Code", "Visual Studio", "IntelliJ", "draw.io", "Android Studio", "Figma"] }
+  { group: "Tools", items: ["Postman", "VS Code", "Visual Studio", "IntelliJ", "draw.io", "Android Studio", "Figma", "Git & GitHub (basic)"] }
 ];
 
 const EXPERIENCE = [
@@ -51,23 +52,22 @@ const EXPERIENCE = [
     date: "Jan 2026 to Jul 2026", title: "Maintenance Engineering Intern", photo: "adm",
     org: CONFIDENTIAL ? "Automotive manufacturing company · Karawang" : "PT Astra Daihatsu Motor · Karawang", locked: false,
     bullets: [
-      "Joined the Maintenance Engineering section (Maintenance Press) to support digitalization projects.",
-      "Worked with maintenance and press-line technicians to turn recurring equipment problems into requirements for digital monitoring.",
-      "Collected data and ran tests on site under real production conditions.",
-      "Reported progress and technical findings to industry supervisors and academic advisors."
+      "Joined the Maintenance Press section as a digitalization intern, working as both developer and system analyst. I turned recurring equipment problems raised by maintenance and press-line technicians into requirements for a digital monitoring system, and captured them in a requirements document, UML diagrams and Figma mockups.",
+      "Collected data and ran tests on site under real production conditions, so the system was built and tuned on actual line data. I reported progress and technical findings to industry supervisors and academic advisors, and documented each stage.",
+      "The work became the Timing Belt Condition Monitoring System, which runs on a factory-floor monitor and supports the section's digitalization goals."
     ]
   },
   {
     date: "Jun 2022 to Aug 2022", title: "Sales & Distribution Data Validation Intern", photo: "forisa",
     org: "PT Forisa NusaPersada · Jakarta",
-    bullets: ["Recorded and validated sales and branch distribution data so that regional and sales performance figures stayed accurate."]
+    bullets: ["As a data validation intern, I recorded and validated sales and branch distribution data, which kept the regional and sales performance figures accurate."]
   },
   {
     date: "Feb 2022 to May 2022", title: "Finance, Accounting & Tax Intern", photo: "sera",
     org: "PT Serasi Autoraya (SERA) · Jakarta",
     bullets: [
-      "Assisted with administrative and financial record keeping, and kept company documents accurate and in order.",
-      "Took part in the division's day-to-day administrative work and learned its processes on the job."
+      "As a finance, accounting and tax intern, I assisted with administrative and financial record keeping, which kept company documents accurate and in order.",
+      "I also joined the division's daily administrative work and learned its processes on the job."
     ]
   }
 ];
@@ -75,39 +75,43 @@ const EXPERIENCE = [
 const PROJECTS = [
   {
     date: "Jan 2026 to Jul 2026", title: "Timing Belt Condition Monitoring System", photo: "timingbelt", locked: true,
-    org: "A real-time computer vision system that classifies timing belt condition as OK, Warning or NG from four industrial cameras, using a YOLOv8s-OBB model I trained myself.",
+    org: "A real-time computer vision system that classifies timing belt condition as OK, Warning or NG from four industrial cameras. My role: end-to-end developer and system analyst, from requirements and dataset to model, API and dashboard.",
     bullets: [
-      "Runs fully offline as a 3-tier stack (Flask API, React-Vite dashboard, MySQL) on an NVIDIA Jetson Orin Nano, and is shown live on a factory-floor monitor.",
-      "Data access on site was limited, so I curated and annotated my own dataset and tuned the model step by step for real production conditions."
+      "Analyzed the problem with the maintenance team and documented it in a requirements document, UML diagrams and Figma mockups, and recorded each stage of progress.",
+      "Curated and annotated the dataset myself in Roboflow because site data was limited, then trained a YOLOv8s-OBB model on 46 images extended with augmentation. It reached 96% mAP@50 on the test set.",
+      "Built a 3-tier stack (Flask API, React-Vite dashboard, MySQL) that runs fully offline on an NVIDIA Jetson Orin Nano Super with a P95 latency of 0.225 s, and displayed it live on a factory-floor monitor. I tuned the model step by step against real production conditions with System Prototyping."
     ],
     stack: ["Python", "YOLOv8s-OBB", "OpenCV", "Flask", "React-Vite", "MySQL", "Jetson Orin Nano", "Roboflow"]
   },
   {
     date: "Sep 2025 to Dec 2025", title: "Campus Facility Booking System", photo: "fasilitas", locked: true,
-    org: "A website for managing campus facilities and inventory. My role: Full-Stack Developer.",
+    org: "A website for managing campus facilities and inventory. My role: Full-Stack Developer and system analyst.",
     bullets: [
-      "Co-initiated the system to move facility booking and asset tracking online.",
-      "Modeled the Purchase Requisition workflow and drew UML diagrams so stakeholders agreed on the system scope."
+      "Co-initiated the system to move facility booking and asset tracking online. As the analyst, I wrote the requirements document, modeled the Purchase Requisition workflow, drew the UML diagrams and designed the Figma mockups, so stakeholders agreed on the scope before development began.",
+      "Built it with Next.js (frontend), ASP.NET (backend) and SQL Server, and documented each stage of progress."
     ],
     stack: ["Next.js", "ASP.NET", "SQL Server"]
   },
   {
     date: "Mar 2025 to Jul 2025", title: "MINFOIN: Mobile Information App", photo: "minfoin",
-    org: "An Android information app for the Informatics Management program. My role: Full-Stack Developer.",
+    org: "An Android information app for the Informatics Management program. My role: Full-Stack Developer and system analyst.",
     bullets: [
+      "Prepared the requirements document, UML diagrams and Figma mockups before coding, and documented each stage of progress.",
       "Designed the UI in React Native and managed the SQL Server database.",
-      "Finished six master-data sets and one core transaction module."
+      "Delivered six master-data sets and one core transaction module."
     ],
-    stack: ["React Native", "SQL Server"]
+    // TODO: pastikan backend yang SEBENARNYA dipakai di MINFOIN, lalu ganti "ASP.NET Web API" kalau berbeda
+    stack: ["React Native", "ASP.NET Web API", "SQL Server"]
   },
   {
-    date: "Feb 2025 to Jul 2025", title: "Master Part Safety Grade Migration", photo: "masterpart",
-    org: "PT Astra Honda Motor", locked: true,
+    date: "Feb 2025 to Jul 2025", title: "Master Part Safety Grade Migration", photo: "masterpart", locked: true,
+    org: "An internal web module for managing part data at PT Astra Honda Motor, built for the Master Part Safety Grade migration. My role: Full-Stack Developer and system analyst.",
     bullets: [
-      "Built with the Waterfall method, writing code from documented system requirements.",
-      "Built internal modules for managing part data, with secure CRUD operations and an Oracle database connection."
+      "Prepared UML diagrams, requirement documentation and Figma mockups, and documented each stage of progress.",
+      "Wrote the code from documented system requirements using the Waterfall method, building internal modules in Java Spring with HTML pages, secure CRUD operations and an Oracle database connection."
     ],
-    stack: ["HTML", "Java Spring", "Oracle"]
+    // TODO: konfirmasi peran (Full-Stack?) dan keterlibatan analyst di proyek ini
+    stack: ["Java Spring", "Oracle", "HTML"]
   }
 ];
 
@@ -147,7 +151,7 @@ const ROLL_WORDS = ["web apps", "mobile apps", "REST APIs", "real-time vision sy
 const BUBBLES = [
   ["🌐", "Web apps", "React · Next.js"],
   ["📱", "Mobile apps", "React Native"],
-  ["🔌", "REST APIs", "ASP.NET · Spring Boot"],
+  ["🔌", "REST APIs", "ASP.NET · Java Spring"],
   ["👁️", "Vision systems", "YOLOv8 · OpenCV"],
   ["🗄️", "Business systems", "SQL Server · MySQL"]
 ];
