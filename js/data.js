@@ -140,3 +140,17 @@ const AWARDS = [
   { title: "3rd Place, Scientific Writing Competition", photo: "lkti", desc: "NOVASTECH, BEM Politeknik Astra", date: "2025", pdf: "assets/certificate/lkti.pdf" },
   { title: "National Finalist, Huawei ICT Competition 2024–2025", photo: "huawei", desc: "Network Track, Huawei ICT Academy", date: "2024", pdf: "assets/certificate/huawei.pdf" }
 ];
+/* ===== (BARU) Aksi lucu — isi teks diedit di sini ===== */
+// Kata yang berputar setelah "I build ..." (roll vertikal, menggantikan efek ketik)
+const ROLL_WORDS = ["web apps", "mobile apps", "REST APIs", "real-time vision systems", "booking & workflow systems"];
+// Bubble di hero: [emoji, judul, tools] — semuanya terlihat sekaligus supaya HRD langsung paham
+const BUBBLES = [
+  ["🌐", "Web apps", "React · Next.js"],
+  ["📱", "Mobile apps", "React Native"],
+  ["🔌", "REST APIs", "ASP.NET · Spring Boot"],
+  ["👁️", "Vision systems", "YOLOv8 · OpenCV"],
+  ["🗄️", "Business systems", "SQL Server · MySQL"]
+];
+// Ucapan maskot per section (kunci = id section) + ucapan acak saat maskot diklik
+const MASCOT = { hero: "Hi, welcome! 💙", about: "That's Raihanah in a nutshell ✨", skills: "So many tools in one toolbox 🧰", exp: "Real-world experience, not just class projects", projects: "Psst... click the images! 👆", edu: "Fresh D3 graduate 🎓", certs: "Certificates galore 📜", org: "A true team player 🤝", awards: "Awards & finalist spots 🏆", contact: "Say hi! I don't bite 💌" };
+const MASCOT_FUN = ["Hehe, that tickles! 💖", "Boop! 🌸", "Psst, the CV button is right there 😉", "Did you see the projects yet?", "Have a lovely day! ✨"];

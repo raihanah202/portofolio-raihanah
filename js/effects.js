@@ -240,7 +240,7 @@ function initReveal() {
     setTimeout(() => { el.classList.remove("rv", "in"); el.style.transitionDelay = ""; }, 1800);
   }), { threshold: 0.1 });
   
-  document.querySelectorAll("section>.eyebrow,section>h2,.about>*,.hero>div:first-child>*,.it,.grid>.card,.skills>.card,.stat,footer>*")
+  document.querySelectorAll("section>.eyebrow,section>h2,section>.hd,.about>*,.hero>div:first-child>*,.it,.sl,.grid>.card,.skills>.card,.stat,footer>*")
     .forEach((el) => {
       const n = [...el.parentNode.children].indexOf(el);
       el.style.transitionDelay = Math.min(n, 6) * 100 + "ms";

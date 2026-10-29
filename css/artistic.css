@@ -1,0 +1,124 @@
+/* ============================================================
+   artistic.css — lapisan WARNA-WARNI & ARTISTIK (BARU).
+   Dimuat setelah redesign.css. Hanya mengubah warna/bentuk, fungsi tetap.
+   Hapus file ini + 1 baris <link> di index.html = kembali ke tampilan sebelumnya.
+   Ide: aurora gradasi, tepi kartu gradasi, tiap section punya warna sendiri.
+   ============================================================ */
+@property --ang{syntax:'<angle>';inherits:false;initial-value:0deg}
+:root{--a:#2563EB;--b:#7C3AED;--serif:'Fraunces',Georgia,serif;--sans:'Plus Jakarta Sans',system-ui,sans-serif}
+
+/* Warna tiap section (--a -> --b = arah gradasi) */
+#about{--a:#0284C7;--b:#4F46E5}
+#skills{--a:#7C3AED;--b:#DB2777}
+#exp{--a:#2563EB;--b:#0891B2}
+#projects{--a:#0F766E;--b:#059669}
+#edu{--a:#C2410C;--b:#BE123C}
+#certs{--a:#4F46E5;--b:#9333EA}
+#org{--a:#DB2777;--b:#C2410C}
+#awards{--a:#B45309;--b:#C2410C}
+section[id]{--acc:var(--a)}
+
+/* Latar: kabut warna lembut */
+body{background:radial-gradient(520px 420px at 6% 8%,rgba(56,189,248,.26),transparent 70%),radial-gradient(480px 420px at 96% 26%,rgba(236,72,153,.18),transparent 70%),
+  radial-gradient(520px 460px at 10% 80%,rgba(139,92,246,.2),transparent 70%),radial-gradient(460px 420px at 92% 92%,rgba(251,191,36,.2),transparent 70%),var(--bg);background-attachment:fixed}
+#progress{background:linear-gradient(90deg,#38BDF8,#8B5CF6,#EC4899,#FBBF24)}
+
+/* Judul: huruf serif lembut + gradasi warna section */
+h2{font:600 clamp(32px,5vw,54px)/1.05 var(--serif);text-decoration:none;display:inline-block;background:linear-gradient(90deg,var(--a),var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}
+h2::after{content:"";display:block;height:6px;width:64px;margin-top:10px;border-radius:6px;background:linear-gradient(90deg,var(--a),var(--b))}
+section>.eyebrow{display:inline-block;padding:6px 14px;border-radius:99px;background:linear-gradient(90deg,var(--a),var(--b));color:#fff}
+
+/* Menu: pil kaca dengan tepi pelangi; tab aktif mengikuti warna section yang sedang dibaca */
+nav a.on,nav a.on:hover{background:linear-gradient(90deg,var(--a),var(--b));color:#fff}
+@media(min-width:761px){
+  nav{border:2px solid transparent;color:var(--ink);backdrop-filter:blur(14px);box-shadow:0 12px 32px rgba(76,29,149,.16);
+    background:linear-gradient(color-mix(in srgb,var(--card) 78%,transparent),color-mix(in srgb,var(--card) 78%,transparent)) padding-box,linear-gradient(90deg,#38BDF8,#8B5CF6,#EC4899,#FBBF24) border-box}
+  nav span{color:var(--a)}
+  nav a{color:var(--ink)}
+  nav a:hover{color:#fff;background:linear-gradient(90deg,var(--a),var(--b))}
+  nav a.on,nav a.on:hover{background:linear-gradient(90deg,var(--a),var(--b));color:#fff}
+  #th{color:var(--ink);border-color:var(--a)}
+}
+
+/* Hero: aurora bergerak + PORTFOLIO outline + cincin pelangi berputar di foto */
+.hero{background:radial-gradient(60% 70% at 85% 15%,rgba(56,189,248,.6),transparent 60%),radial-gradient(50% 60% at 95% 85%,rgba(236,72,153,.55),transparent 60%),
+  radial-gradient(45% 55% at 10% 90%,rgba(139,92,246,.6),transparent 60%),radial-gradient(40% 50% at 40% 0%,rgba(251,191,36,.3),transparent 60%),#0E1647;
+  background-size:150% 150%;animation:aur 16s ease-in-out infinite alternate}
+@keyframes aur{to{background-position:100% 100%}}
+.hero::before{font:600 clamp(64px,14vw,176px)/1 var(--serif);font-style:italic;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.22)}
+.hero h1{font-family:var(--serif);font-weight:600;letter-spacing:-.02em}
+.hero h1 em{background:linear-gradient(90deg,#7DD3FC,#F0ABFC,#FDBA74);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .btn.p{background:linear-gradient(90deg,#FFD36B,#FF9ECF);color:#1a1033;border-color:transparent}
+.hero .btn{backdrop-filter:blur(6px)}
+.hero .detect::before{border-color:#6EE7B7}
+.hero .detect b{background:#6EE7B7;color:#0B1230}
+.hero .me .fr{border-color:transparent;animation:spin 8s linear infinite;
+  background:linear-gradient(#0000,#0000) padding-box,conic-gradient(from var(--ang),#38BDF8,#8B5CF6,#EC4899,#FBBF24,#38BDF8) border-box}
+@keyframes spin{to{--ang:360deg}}
+.gear::before{background:linear-gradient(90deg,#7DD3FC,#C4B5FD);color:#1a1033}
+.gear::after{background:linear-gradient(90deg,#FDBA74,#F9A8D4);color:#1a1033}
+
+/* Tombol umum + tombol PDF */
+.btn.p,.btn-pdf{background:linear-gradient(90deg,var(--a),var(--b));color:#fff;border-color:transparent}
+
+/* Kartu: tepi gradasi sesuai section, melayang & sedikit miring saat hover */
+.card{border:1.5px solid transparent;border-radius:26px;transition:transform .35s,box-shadow .35s;
+  background:linear-gradient(var(--card),var(--card)) padding-box,linear-gradient(135deg,var(--a),var(--b)) border-box}
+:root[data-theme] .card{box-shadow:0 10px 28px color-mix(in srgb,var(--a) 14%,transparent)}
+:root[data-theme] .card:hover{transform:translateY(-6px) rotate(-.5deg);box-shadow:0 22px 44px color-mix(in srgb,var(--a) 30%,transparent)}
+.card .ph{border-radius:18px}
+.card .chip{background:color-mix(in srgb,var(--a) 10%,var(--card));border-color:color-mix(in srgb,var(--a) 35%,transparent);color:var(--ink)}
+.skills>.card:nth-child(7n+1){--a:#2563EB;--b:#06B6D4}
+.skills>.card:nth-child(7n+2){--a:#4F46E5;--b:#8B5CF6}
+.skills>.card:nth-child(7n+3){--a:#7C3AED;--b:#EC4899}
+.skills>.card:nth-child(7n+4){--a:#0F766E;--b:#34D399}
+.skills>.card:nth-child(7n+5){--a:#C2410C;--b:#F43F5E}
+.skills>.card:nth-child(7n+6){--a:#DB2777;--b:#FB923C}
+.skills>.card:nth-child(7n+7){--a:#0284C7;--b:#6366F1}
+.skills .card h3{color:var(--a)}
+
+/* Statistik: 4 warna gradasi penuh */
+.stat{border:0;color:#fff;box-shadow:0 12px 28px rgba(15,23,80,.18)}
+.stat b{color:#fff}.stat span{color:rgba(255,255,255,.88)}
+.stat:nth-child(1){background:linear-gradient(135deg,#0284C7,#4F46E5)}
+.stat:nth-child(2){background:linear-gradient(135deg,#7C3AED,#DB2777)}
+.stat:nth-child(3){background:linear-gradient(135deg,#C2410C,#F59E0B)}
+.stat:nth-child(4){background:linear-gradient(135deg,#0F766E,#10B981)}
+
+/* Slider kartu Experience & Projects: tiap kartu punya warna sendiri */
+.sc{--a:#2563EB;--b:#06B6D4;background:linear-gradient(165deg,color-mix(in srgb,var(--a) 62%,#0B1230),#0B1230 78%)}
+.sc:nth-child(3n+2){--a:#0D9488;--b:#34D399}
+.sc:nth-child(3n+3){--a:#7C3AED;--b:#EC4899}
+#projects .sc:nth-child(3n+1){--a:#0D9488;--b:#34D399}
+#projects .sc:nth-child(3n+2){--a:#DB2777;--b:#FB923C}
+#projects .sc:nth-child(3n+3){--a:#2563EB;--b:#06B6D4}
+.sc.active{box-shadow:0 24px 54px color-mix(in srgb,var(--a) 45%,transparent)}
+.sc-body{border-top:3px solid;border-image:linear-gradient(90deg,var(--b),var(--a)) 1}
+.sc .w{display:inline-block;padding:3px 12px;border-radius:99px;background:rgba(255,255,255,.16);color:#fff}
+.sc .chip{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.28);color:#fff}
+.sl-ctrl .round{border-color:var(--a);color:var(--a)}
+.sl-ctrl .round.solid{background:linear-gradient(135deg,var(--a),var(--b));border-color:transparent;color:#fff}
+.sl-dots i.on{background:var(--a)}
+
+/* Timeline Education */
+.tl{border-left-color:color-mix(in srgb,var(--a) 30%,transparent)}
+.tl-fill{background:linear-gradient(var(--a),var(--b))}
+
+/* Pop-up 2 card: ikut warna kartu yang diklik (--a/--b disalin detail.js) */
+.dt-wrap{background:rgba(20,10,60,.5)}
+.dt-card{border:2px solid transparent;background:linear-gradient(var(--card),var(--card)) padding-box,linear-gradient(135deg,var(--a),var(--b)) border-box}
+.dt-info h3{font-family:var(--serif)}
+.dt-info .w{display:inline-block;padding:3px 12px;border-radius:99px;background:color-mix(in srgb,var(--a) 14%,transparent);color:var(--a)}
+.dt-b:hover{background:var(--a);color:#fff}
+.dt-bar{background:linear-gradient(90deg,var(--a),var(--b))}
+.dt-dots i.on{background:var(--a)}
+
+/* Footer / kontak: aurora */
+footer{background:radial-gradient(60% 80% at 90% 10%,rgba(56,189,248,.5),transparent 60%),radial-gradient(50% 70% at 10% 90%,rgba(236,72,153,.45),transparent 60%),
+  radial-gradient(40% 60% at 60% 100%,rgba(251,191,36,.3),transparent 60%),#0E1647}
+footer h2{background:linear-gradient(90deg,#7DD3FC,#F0ABFC,#FDBA74);-webkit-background-clip:text;background-clip:text;color:transparent}
+footer h2::after{display:none}
+footer .eyebrow{background:rgba(255,255,255,.14);color:#fff}
+footer .btn.p{background:linear-gradient(90deg,#FFD36B,#FF9ECF);color:#1a1033}
+
+@media(prefers-reduced-motion:reduce){.hero,.hero .me .fr{animation:none}}

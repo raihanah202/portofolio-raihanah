@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8">
 <!-- viewport-fit=cover: layar penuh di HP berponi -->
@@ -11,12 +11,15 @@
 <!-- Font Google (butuh internet; kalau offline otomatis pakai font cadangan) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,500&family=JetBrains+Mono:wght@400;600&family=Outfit:wght@400;500;600&family=Caveat:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,500&family=JetBrains+Mono:wght@400;600&family=Outfit:wght@400;500;600&family=Caveat:wght@700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,800;1,800&display=swap" rel="stylesheet">
 
 <!-- CSS: urutan penting (yang belakang menimpa yang depan) -->
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/components.css">
 <link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/redesign.css">   <!-- BARU: tampilan redesign -->
+<link rel="stylesheet" href="css/artistic.css">   <!-- BARU: warna-warni & artistik -->
+<link rel="stylesheet" href="css/cute.css">   <!-- BARU: aksi lucu (kursor, maskot, bunga) -->
 <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
@@ -35,8 +38,8 @@
 <span class="loc"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Jakarta Utara, DKI Jakarta</span>
 </div>
 <h1>Raihanah<br><em>Basyirah</em></h1>
-<div class="detect"><b>developer · 0.98</b><span class="tag">Full-Stack Developer | Computer Vision</span></div>
-<p class="type">I build <b id="tw"></b><span class="cur"></span></p>
+<p class="type">I build <span class="roll" id="roll"></span></p>
+<div class="bubbles" id="bubbles" aria-label="What I can build"></div>
 <p class="lead">Informatics Management (D3) graduate who loves building web & mobile systems, and recently fell for Computer Vision on edge devices.</p>
 <div class="btns"><!-- Tombol CV: href diisi dari CONTACT.cv (render.js), dibuka di tab baru -->
 <a class="btn p" id="btn-cv" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg>Download CV</a><a class="btn" href="#contact"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Contact Me</a></div>
@@ -54,9 +57,9 @@
 <!-- ===== SKILLS (diisi dari js/data.js) ===== -->
 <section id="skills"><span class="eyebrow">02 — Skills</span><h2>Tech stack</h2><div class="skills" id="sk"></div></section>
 <!-- ===== PENGALAMAN KERJA ===== -->
-<section id="exp"><span class="eyebrow">03 — Experience</span><h2>Work experience</h2><div class="tl" id="ex"></div></section>
+<section id="exp"><span class="eyebrow">03 — Experience</span><h2>Work experience</h2><div class="sl" id="ex"></div></section>
 <!-- ===== PROYEK ===== -->
-<section id="projects"><span class="eyebrow">04 — Projects</span><h2>Projects</h2><div class="tl" id="pr"></div></section>
+<section id="projects"><span class="eyebrow">04 — Projects</span><h2>Projects</h2><div class="sl" id="pr"></div></section>
 <!-- ===== PENDIDIKAN ===== -->
 <section id="edu"><span class="eyebrow">05 — Education</span><h2>Education</h2><div class="tl" id="ed"></div></section>
 <!-- ===== SERTIFIKAT ===== -->
@@ -76,6 +79,9 @@
 <script defer src="js/data.js"></script>     <!-- isi konten -->
 <script defer src="js/render.js"></script>   <!-- konten -> HTML -->
 <script defer src="js/effects.js"></script>  <!-- animasi & interaksi -->
+<script defer src="js/extras.js"></script>   <!-- BARU: progress, scroll-spy, PDF, lightbox ekstra -->
+<script defer src="js/detail.js"></script>   <!-- BARU: pop-up 2 card -->
+<script defer src="js/decor.js"></script>   <!-- BARU: aksi lucu -->
 <script defer src="js/main.js"></script>     <!-- penjalan utama -->
 </body>
 </html>

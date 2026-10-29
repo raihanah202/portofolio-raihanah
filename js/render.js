@@ -22,7 +22,7 @@ function renderGallery(key, emoji) {
                 </object>
               </div>`;
     }
-    return `<img src="${u}" alt="" onerror="this.remove()">`;
+    return `<img src="${u}" alt="" loading="lazy" decoding="async" onerror="this.remove()">`;
   }).join("");
 
   return `<div class="ph ${isMultiple ? 'm' : ''}">
@@ -82,6 +82,22 @@ function renderCardGrid(targetId, items, photoPrefix, emoji) {
   $(targetId).innerHTML = html;
 }
 
+/* Slider kartu (Experience & Projects): foto di atas, panel navy berisi judul + penjelasan */
+function renderSlider(targetId, items, photoPrefix, emoji) {
+  const cards = items.map((it, n) => {
+    const lock = it.locked && CONFIDENTIAL ? '<span class="lock">🔒 details confidential</span>' : "";
+    const bullets = it.bullets ? `<ul>${it.bullets.map((b) => `<li>${b}</li>`).join("")}</ul>` : "";
+    const stack = it.stack ? `<div class="chips">${renderChips(it.stack)}</div>` : "";
+    return `<article class="sc">${renderGallery(it.photo || `${photoPrefix}-${n + 1}`, emoji)}
+      <div class="sc-body"><span class="w">${it.date}</span><h3>${it.title}${lock}</h3>
+      <p class="sub">${it.org || ""}</p>${bullets}${stack}</div></article>`;
+  }).join("");
+  $(targetId).innerHTML = `<div class="sl-track">${cards}</div>
+    <div class="sl-ctrl"><button class="round sl-prev" aria-label="Previous">←</button>
+    <div class="sl-dots">${items.map(() => "<i></i>").join("")}</div>
+    <button class="round solid sl-next" aria-label="Next">→</button></div>`;
+}
+
 function renderSkills() {
   const html = SKILLS.map((s) =>
     `<div class="card"><h3>${s.group}</h3><div class="chips">${renderChips(s.items)}</div></div>`).join("");
@@ -99,8 +115,8 @@ function renderContact() {
 function renderAll() {
   renderContact();
   renderSkills();
-  renderTimeline("ex", EXPERIENCE, "kerja", "💼");
-  renderTimeline("pr", PROJECTS, "proyek", "🚀");
+  renderSlider("ex", EXPERIENCE, "kerja", "💼");
+  renderSlider("pr", PROJECTS, "proyek", "🚀");
   renderEducationCards("ed", EDUCATION);
   renderCardGrid("ce", CERTIFICATES, "sertifikat", "📜");
   renderCardGrid("og", ORGANIZATIONS, "organisasi", "🌸");

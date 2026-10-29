@@ -1,0 +1,119 @@
+/* ============================================================
+   cute.css — AKSI LUCU (BARU): kursor hati, maskot, bunga, bubble, roll teks,
+   font PORTFOLIO warna-warni transparan. Dimuat setelah artistic.css.
+   Ubah arah hati kursor: --rot (135deg = ujung menghadap kiri-atas; 180deg = hati terbalik penuh).
+   ============================================================ */
+:root{--rot:135deg}
+
+/* Tulisan PORTFOLIO: huruf tebal transparan, warnanya pelangi yang mengalir */
+.hero::before{font:800 clamp(56px,12vw,150px)/1 'Plus Jakarta Sans',var(--sans);font-style:normal;letter-spacing:.02em;
+  background:linear-gradient(90deg,#38BDF8,#8B5CF6,#EC4899,#FBBF24,#34D399,#38BDF8) 0 0/200% 100%;-webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-stroke:0;opacity:.32;animation:flow 12s linear infinite}
+@keyframes flow{to{background-position:200% 0}}
+
+/* "I build ..." roll vertikal ala mesin slot */
+.roll{display:inline-block;height:1.5em;overflow:hidden;vertical-align:bottom;transition:width .5s cubic-bezier(.2,.8,.2,1);
+  -webkit-mask-image:linear-gradient(transparent,#000 22%,#000 78%,transparent);mask-image:linear-gradient(transparent,#000 22%,#000 78%,transparent)}
+.rl{display:block;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.rl b{display:block;height:1.5em;line-height:1.5em;white-space:nowrap;font-weight:600}
+.rl i{display:inline-block;font-style:normal}
+
+/* Bubble kilap (pengganti kotak detect) */
+.bubbles{display:flex;flex-wrap:wrap;gap:12px 10px;margin:16px 0 8px}
+.bub,.gear::before,.gear::after{box-shadow:inset 0 -6px 10px rgba(255,255,255,.35),inset 0 6px 10px rgba(255,255,255,.6),0 10px 20px rgba(0,0,0,.22)}
+.bub{--d:0s;position:relative;display:inline-flex;align-items:baseline;gap:6px;padding:8px 16px;border-radius:99px;color:#1a1033;font:600 13.5px var(--sans);
+  animation:bubup 3.6s ease-in-out var(--d) infinite;transition:scale .3s cubic-bezier(.3,1.6,.5,1)}
+.bub::after{content:"";position:absolute;left:14px;top:5px;width:14px;height:6px;border-radius:50%;background:rgba(255,255,255,.75);transform:rotate(-12deg)} /* kilau */
+.bub small{font:400 12px var(--sans);opacity:.7}
+.bub:hover{scale:1.12}
+@keyframes bubup{50%{transform:translateY(-7px)}}
+.b0{background:linear-gradient(135deg,#FBCFE8,#F472B6)}.b1{background:linear-gradient(135deg,#BAE6FD,#38BDF8)}.b2{background:linear-gradient(135deg,#FEF08A,#FBBF24)}
+.b3{background:linear-gradient(135deg,#A7F3D0,#34D399)}.b4{background:linear-gradient(135deg,#DDD6FE,#A78BFA)}
+.gear::before{content:"Computer Vision";background:linear-gradient(135deg,#DDD6FE,#A78BFA);color:#1a1033}
+.gear::after{content:"Full-Stack Developer";background:linear-gradient(135deg,#FBCFE8,#F472B6);color:#1a1033}
+@media(max-width:760px){.bubbles{justify-content:center}}
+
+/* Bunga: melayang naik-turun + mengembang */
+section[id]{position:relative}
+.flw,.hero>.flw{position:absolute;z-index:0;pointer-events:none;width:var(--s);height:var(--s);animation:bob var(--d,6s) ease-in-out infinite}
+.flw svg{width:100%;height:100%;animation:bloom calc(var(--d,6s)*.7) ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-16px)}}
+@keyframes bloom{0%,100%{transform:scale(.85) rotate(0)}50%{transform:scale(1.18) rotate(18deg)}}
+@media(max-width:760px){.flw{--s:40px!important}}
+
+/* Aksi kecil: judul memanjang saat hover, chip bergoyang */
+h2::after{transition:width .4s cubic-bezier(.3,1.6,.5,1)}
+h2:hover::after{width:140px}
+.chip:hover,.chip-s:hover{animation:wig .45s ease}
+@keyframes wig{25%{rotate:-4deg}75%{rotate:4deg}}
+
+/* Kursor hati + partikel */
+html.cc,html.cc *{cursor:none!important}
+.hc{position:fixed;left:0;top:0;z-index:100001;pointer-events:none;opacity:0;transition:opacity .2s}
+.hc i{display:block;width:28px;height:28px;transform-origin:14px 25px;transform:rotate(var(--rot)) scale(var(--s,1));
+  transition:transform .25s cubic-bezier(.3,1.6,.5,1);filter:drop-shadow(0 3px 6px rgba(255,77,141,.45))}
+.hc svg{display:block;animation:beat 1.4s ease-in-out infinite}
+@keyframes beat{50%{transform:scale(1.12)}}
+.hc.big i{--s:1.7}.hc.press i{--s:.8}
+.pt{position:fixed;z-index:100000;pointer-events:none;will-change:transform}
+
+/* Maskot */
+#mascot{position:fixed;right:18px;bottom:16px;z-index:60;width:96px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+#mascot svg{display:block;width:100%;height:auto;overflow:visible;animation:mbob 3s ease-in-out infinite;filter:drop-shadow(0 8px 12px rgba(76,29,149,.25))}
+#mascot.jump svg{animation:mjump .6s cubic-bezier(.3,1.6,.5,1)}
+@keyframes mbob{50%{transform:translateY(-7px)}}
+@keyframes mjump{30%{transform:translateY(-26px) scale(1.06,.94)}60%{transform:translateY(0) scale(.96,1.05)}}
+.eyes{transform-box:fill-box;transform-origin:50% 50%;animation:blink 5s infinite}
+@keyframes blink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.08)}}
+.hand-r{transform-box:fill-box;transform-origin:50% 100%;animation:wave 3.2s ease-in-out infinite}
+@keyframes wave{0%,60%,100%{transform:rotate(0)}70%{transform:rotate(-25deg)}80%{transform:rotate(10deg)}90%{transform:rotate(-20deg)}}
+.mb{position:absolute;right:18px;bottom:100%;margin-bottom:8px;width:max-content;max-width:210px;padding:8px 14px;border-radius:16px 16px 4px 16px;background:var(--card);color:var(--ink);
+  font:600 13px/1.3 var(--sans);box-shadow:0 10px 24px rgba(76,29,149,.22);opacity:0;transform:translateY(8px) scale(.9);transition:.35s cubic-bezier(.3,1.6,.5,1);pointer-events:none}
+.mb.show{opacity:1;transform:none}
+@media(max-width:760px){#mascot{width:70px;right:10px;bottom:10px}.mb{max-width:170px;font-size:12px}}
+@media print{#mascot,.hc,.pt,.flw{display:none}}
+
+@media(prefers-reduced-motion:reduce){.hero::before,.bub,.gear::before,.gear::after,.flw,.flw svg,#mascot svg,.eyes,.hand-r,.hc svg{animation:none!important}}
+
+/* ============ Judul section: nomor dalam BUNGA + teks judul (satu baris) ============ */
+.hd{display:flex;align-items:center;gap:16px;margin-bottom:10px}
+.hd h2{margin:0}
+footer .hd{justify-content:center}
+.num{position:relative;flex:none;width:68px;height:68px;display:grid;place-items:center;animation:numbob 5s ease-in-out infinite;transition:scale .3s cubic-bezier(.3,1.6,.5,1)}
+.num svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.np{transform-box:fill-box;transform-origin:center;animation:spin2 16s linear infinite}
+.np ellipse{fill:var(--a)}.np ellipse:nth-child(even){fill:var(--b)}
+.nc{fill:var(--card)}
+.num b{position:relative;font:800 17px var(--mono);color:var(--a)}
+.hd:hover .num{scale:1.12}.hd:hover .np{animation-duration:4s}
+@keyframes spin2{to{transform:rotate(360deg)}}
+@keyframes numbob{50%{transform:translateY(-6px)}}
+@media(max-width:760px){.num{width:54px;height:54px}.num b{font-size:14px}.hd{gap:12px}}
+
+/* ============ Skills: bentuk BLOB lucu + stiker emoji (bukan kartu kotak) ============ */
+.skills>.card{position:relative;overflow:visible;border:0;padding:40px 38px 34px;border-radius:var(--r1);animation:morph 10s ease-in-out infinite;
+  background:linear-gradient(145deg,color-mix(in srgb,var(--a) 20%,var(--card)),color-mix(in srgb,var(--b) 16%,var(--card)))}
+:root[data-theme] .skills>.card{box-shadow:0 16px 34px color-mix(in srgb,var(--a) 24%,transparent)}
+:root[data-theme] .skills>.card:hover{transform:translateY(-8px) scale(1.04);box-shadow:0 24px 44px color-mix(in srgb,var(--a) 34%,transparent)}
+@keyframes morph{50%{border-radius:var(--r2)}}   /* bentuk blob berubah pelan-pelan */
+.skills>.card:nth-child(7n+1){--r1:38% 62% 44% 56%/52% 40% 60% 48%;--r2:56% 44% 38% 62%/44% 56% 44% 56%}
+.skills>.card:nth-child(7n+2){--r1:44% 56% 36% 64%/56% 44% 56% 44%;--r2:34% 66% 52% 48%/46% 58% 42% 54%}
+.skills>.card:nth-child(7n+3){--r1:52% 48% 40% 60%/40% 54% 46% 60%;--r2:40% 60% 54% 46%/56% 42% 58% 44%}
+.skills>.card:nth-child(7n+4){--r1:36% 64% 50% 50%/60% 40% 60% 40%;--r2:54% 46% 36% 64%/42% 58% 42% 58%}
+.skills>.card:nth-child(7n+5){--r1:46% 54% 62% 38%/44% 56% 44% 56%;--r2:60% 40% 42% 58%/56% 44% 56% 44%}
+.skills>.card:nth-child(7n+6){--r1:40% 60% 48% 52%/58% 42% 58% 42%;--r2:52% 48% 56% 44%/44% 56% 44% 56%}
+.skills>.card:nth-child(7n+7){--r1:50% 50% 38% 62%/46% 60% 40% 54%;--r2:38% 62% 52% 48%/58% 42% 56% 44%}
+.skills>.card:nth-child(3n+2){margin-top:30px}   /* kolom tengah turun sedikit: susunan tidak kaku */
+.skills>.card::before{content:"🤖";position:absolute;z-index:1;top:-14px;right:22px;width:52px;height:52px;border-radius:50%;background:var(--card);display:grid;place-items:center;font-size:24px;
+  box-shadow:0 8px 16px color-mix(in srgb,var(--a) 30%,transparent);animation:numbob 4s ease-in-out infinite}
+.skills>.card:nth-child(7n+2)::before{content:"💬"}.skills>.card:nth-child(7n+3)::before{content:"🎨"}.skills>.card:nth-child(7n+4)::before{content:"⚙️"}
+.skills>.card:nth-child(7n+5)::before{content:"🗄️"}.skills>.card:nth-child(7n+6)::before{content:"🧩"}.skills>.card:nth-child(7n+7)::before{content:"🧰"}
+.skills>.card::after{content:"✿";position:absolute;right:30px;bottom:16px;font-size:26px;color:var(--b);opacity:.55;animation:spin2 12s linear infinite}
+.skills .chip{background:color-mix(in srgb,var(--card) 82%,transparent);border-color:color-mix(in srgb,var(--a) 28%,transparent);transition:scale .25s cubic-bezier(.3,1.6,.5,1)}
+.skills .chip:hover{scale:1.12}
+@media(max-width:760px){.skills>.card:nth-child(3n+2){margin-top:0}}
+
+/* Ekor kucing */
+.tail{transform-box:fill-box;transform-origin:0% 100%;animation:wag 2.4s ease-in-out infinite}
+@keyframes wag{50%{transform:rotate(14deg)}}
+@media(prefers-reduced-motion:reduce){.num,.np,.skills>.card,.skills>.card::before,.skills>.card::after,.tail{animation:none!important}}
