@@ -127,7 +127,7 @@ const EDUCATION = [
 ];
 
 const CERTIFICATES = [
-  { title: "MikroTik Certified Network Associate (MTCNA)", photo: "mikrotik", org: "MikroTik", desc: "ID 2512NA1894", date: "Dec 2025", pdf: "assets/certificate/mtcna.pdf" },
+  { title: "MikroTik Certified Network Associate (MTCNA)", photo: "mikrotik", org: "MikroTik", desc: "ID 2512NA1894", date: "Feb 2025", pdf: "assets/certificate/mtcna.pdf" },
   { title: "Samsung Innovation Campus", photo: "sic", org: "Samsung Electronics", desc: "Code Kickstart: Python Programming (Batch 7)", date: "Oct 2025", pdf: "assets/certificate/samsung.pdf" },
   { title: "NDG Linux Unhatched 2024", photo: "linux", org: "Cisco Networking Academy", desc: "Linux Essentials Foundation", date: "Mar 2024", pdf: "assets/certificate/NDG.pdf" },
   { title: "Virtual Machine Fundamental", photo: "vm", org: "Aguna Course", desc: "Virtualization & Server Basics", date: "Feb 2024", pdf: "assets/certificate/aguna.pdf" }
